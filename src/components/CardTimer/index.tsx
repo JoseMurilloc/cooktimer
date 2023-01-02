@@ -6,7 +6,7 @@ export function CardTimer (props: CardTimerProps) {
   return (
     <S.ContainerCardTimer>
       <S.PlayerButton>
-        <div>
+        <div className="content">
           <Plus size={22} weight="fill" color="#FFF9F2" />
         </div>
       </S.PlayerButton>

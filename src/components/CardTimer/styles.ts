@@ -5,7 +5,7 @@ export const ContainerCardTimer = styled('div', {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
- 
+  backgroundColor: '$text_000',
 
   padding: 20,
   gap: 13,
@@ -30,7 +30,7 @@ export const PlayerButton = styled('button', {
   border: 'none',
   cursor: 'pointer',
 
-  div: {
+  '.content': {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
