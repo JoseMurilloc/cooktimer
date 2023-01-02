@@ -8,9 +8,20 @@ export const {
   theme,
   createTheme,
   css,
-  getCssText
+  getCssText,
 } = createStitches({
   theme: {
+    media: {
+      sm: '(min-width: 640px)',
+      md: '(min-width: 768px)',
+      lg: '(min-width: 1024px)',
+    },
+    breakpoints: {
+      sm: '@media (min-width: 640px)',
+      md: '@media (min-width: 768px)',
+      lg: '@media (min-width: 1024px)',
+      xl: '@media (min-width: 1280px)',
+    },
     colors: {
       primary: '#FF970F', 
       primary_800: '#FDAB40', 
@@ -57,7 +68,7 @@ export const {
       xl: '1.25rem',
       '2xl': '1.5rem',
       '4xl': '2rem',
-      '5xl': '2.25rem',
+      '5xl': '2.50rem',
       '6xl': '3rem',
       '7xl': '4rem',
       '8xl': '4.5rem',
