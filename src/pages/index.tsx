@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from 'components/Header'
 import * as S from '../styles/pages/home'
+import { CardTimer } from 'components/CardTimer'
 
 export default function Home() {
   return (
@@ -12,6 +13,15 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Header />
+        <S.Main>
+          <section>
+            <h1>Vamos começar a cozinhar?</h1>
+            <p>Crie seu primeiro temporizador e defina seus horários.</p>
+          </section> 
+          <section>
+            <CardTimer />
+          </section>
+        </S.Main>
       </S.Container>
     </>
   )

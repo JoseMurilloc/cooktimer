@@ -19,5 +19,29 @@ export const globalStyles = globalCss({
   'img': {
     maxWidth: '100%',
     height: 'auto',
+  },
+
+  '@media(min-width: 760px)': {
+    html: {
+      fontSize: '70%'
+    }
+  },
+  
+  '@media(min-width: 1024px)': {
+    html: {
+      fontSize: '80%',
+    }
+  },
+  
+  '@media(min-width: 1200px)': {
+    html: {
+      fontSize: '90%'
+    }
+  },
+  
+  '@media(min-width: 1600px)': {
+    html: {
+      fontSize: '100%',
+    }
   }
 })
