@@ -1,7 +1,8 @@
+import { AddPlayerPopover } from "components/Popover";
 import { Pause, Pencil, Plus, X } from "phosphor-react";
 import { colors as DesignSystemColors } from "../../stories/designSystems/colors";
-import * as S from "./styles";
 import { CardTimerProps } from "./types";
+import * as S from "./styles";
 
 export function CardTimer ({
   type,
@@ -11,11 +12,7 @@ export function CardTimer ({
   if (type === 'add' && !timer) {
     return (
       <S.ContainerCardTimer screenMode={type}>
-        <S.AddPlayerButton>
-          <div className="content">
-            <Plus size={22} weight="fill" color="#FFF9F2" />
-          </div>
-        </S.AddPlayerButton>
+        <AddPlayerPopover />
       </S.ContainerCardTimer>
     );
   }

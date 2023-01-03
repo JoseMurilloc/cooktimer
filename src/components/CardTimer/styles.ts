@@ -9,7 +9,6 @@ export const ContainerCardTimer = styled('div', {
 
   padding: '$7',
   gap: 13,
-  border: '1px dashed #C9C9C9',
   borderRadius: 7,
 
   width: '15rem',
@@ -24,6 +23,12 @@ export const ContainerCardTimer = styled('div', {
     borderBottom: '0.6px solid #EEEEEE',
   },
 
+  main: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center'
+  },
+
   footer: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -34,10 +39,12 @@ export const ContainerCardTimer = styled('div', {
   variants: {
     screenMode: {
       add: {
+        border: '1px dashed #C9C9C9',
         justifyContent: 'center',
       },
       edit: {
         justifyContent: 'space-between',
+        border: '1px solid #C9C9C9',
       }
     }
   }
@@ -55,7 +62,7 @@ export const Timer = styled('h1', {
   color: '$text',
   fontWeight: '$bold',
   fontFamily: '$secondary',
-  fontSize: '$5xl',
+  fontSize: '$7xl',
 })
 
 export const BackgroundBorder = styled('div', {
@@ -66,34 +73,6 @@ export const BackgroundBorder = styled('div', {
   width: '100%',
   height: '0.375rem',
   borderRadius: '0px 0px 8px 8px;'
-})
-
-
-export const AddPlayerButton = styled('button', {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
- 
-
-  backgroundColor: '$primary_200',
-  width: '3.62rem',
-  height: '3.62rem',
-  borderRadius: '1.75rem',
-  border: 'none',
-  cursor: 'pointer',
-
-  '.content': {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-   
-    width: '2.44rem',
-    height: '2.44rem',
-    borderRadius: '1.75rem',
-    backgroundColor: '$primary'
-  }
 })
 
 export const PlayerButton = styled('button', {
