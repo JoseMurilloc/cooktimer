@@ -18,8 +18,14 @@ export default function Home() {
             <h1>Vamos começar a cozinhar?</h1>
             <p>Crie seu primeiro temporizador e defina seus horários.</p>
           </section> 
-          <section>
-            <CardTimer />
+          <section className="cardsGrid">
+            <CardTimer 
+              type="edit" 
+              timer={{
+                title: 'Fazendo arroz na panela'
+              }} 
+            />
+            <CardTimer type="add"/>
           </section>
         </S.Main>
       </S.Container>
