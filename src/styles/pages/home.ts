@@ -25,5 +25,11 @@ export const Main = styled('main', {
   'section p': {
     color: '$text_400',
     fontSize: '$md',
+  },
+
+  '.cardsGrid':{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '$5'
   }
 })
