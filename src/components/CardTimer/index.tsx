@@ -1,5 +1,5 @@
 import { Pause, Pencil, Plus, X } from "phosphor-react";
-import { theme } from "../../styles";
+import { colors as DesignSystemColors } from "../../stories/designSystems/colors";
 import * as S from "./styles";
 import { CardTimerProps } from "./types";
 
@@ -35,20 +35,20 @@ export function CardTimer ({
         <S.WrapperIcon>
           <Pencil
             size="1.5rem" 
-            color={theme.colors.primary} 
+            color={DesignSystemColors.primary} 
           />            
         </S.WrapperIcon>
         <S.PlayerButton>
            <Pause 
             weight="fill"
             size="1.5rem" 
-            color={theme.colors.primary_000}       
+            color={DesignSystemColors.primary_000}       
            />
         </S.PlayerButton>
         <S.WrapperIcon>
           <X 
             size="1.5rem" 
-            color={theme.colors.primary} 
+            color={DesignSystemColors.primary} 
           />
         </S.WrapperIcon>
       </footer>
