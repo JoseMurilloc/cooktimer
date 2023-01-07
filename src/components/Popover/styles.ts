@@ -31,8 +31,8 @@ export const AddPlayerButton = styled(Popover.Trigger, {
 export const Content = styled(Popover.Content, {
   backgroundColor: '#FDFDFD',
   boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.13)',
-  borderRadius: 12,
-  minWidth: 302,
+  borderRadius: '0.75rem',
+  minWidth: '18.875rem',
   padding: '1.875rem 2.8125rem 1.875rem 1.25rem',
   display: 'flex',
   flexDirection: 'column',
@@ -42,7 +42,7 @@ export const Content = styled(Popover.Content, {
     display: 'flex',
     justifyContent: 'flex-end',
     gap: '$3',
-    marginTop: 26,
+    marginTop: '1.625rem',
   },
 
   main: {
@@ -62,11 +62,12 @@ export const Header = styled('header', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  marginBottom: '1.25rem',
 
   '.closeButton': {
     backgroundColor: 'transparent',
     border: 'none',
-    marginRight: 10,
+    marginRight: '0.625rem',
     cursor: 'pointer'
   },
 
