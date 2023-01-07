@@ -1,6 +1,11 @@
+import { Button } from 'components/Button';
+import { Plus, X } from 'phosphor-react';
+
 import * as Popover from '@radix-ui/react-popover';
-import { CaretLeft, Plus, X } from 'phosphor-react';
 import * as S from './styles'
+import { Input } from 'components/Input';
+import { InputTimer } from 'components/InputTimer';
+import { SelectedFoodEmoji } from 'components/SelectedFoodEmoji';
 
 export function AddPlayerPopover () {
   return (
@@ -16,18 +21,32 @@ export function AddPlayerPopover () {
           align="center" 
           side="right"
         >
-         <S.Header>
+          <S.Header>
             <h1>Criar timer de cozinha</h1>
             <Popover.Close className="closeButton">
               <X color="#444" size={16} weight="fill" />
             </Popover.Close>
-         </S.Header>
-         <main>
-          <h2>Main</h2>
-         </main>
-         <footer>
-          <h2>Footer</h2>
-         </footer>
+          </S.Header>
+          <S.Form>
+            <div className="inputBox">
+              <SelectedFoodEmoji />
+              <Input 
+                label="Nome"
+                placeholder="Digite o nome"
+                hasError={false}
+                required 
+              />
+            </div>
+            <InputTimer label="label"/>
+          </S.Form>
+          <footer>
+              <Button layout='outline'>
+                Cancelar
+              </Button>
+              <Button>
+                Criar
+              </Button> 
+          </footer>
          <Popover.Arrow className="arrow"/>
          <S.BorderBackgroundLeft />
         </S.Content>
