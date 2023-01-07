@@ -18,7 +18,7 @@ export const Main = styled('main', {
 
 
   'section p': {
-    color: '$text_400',
+    color: '$text_600',
     fontSize: '$md',
   },
 
