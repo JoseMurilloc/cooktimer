@@ -110,7 +110,21 @@ export const WrapperIcon = styled('div', {
 
   backgroundColor: '$primary_200',
   padding: '$3 $2',
-  borderRadius: 10,
 
   cursor: 'pointer',
+
+  variants: {
+    around: {
+      circle: {
+        borderRadius: '50%',
+      },
+      normal: {
+        borderRadius: 10,
+      }
+    }
+  },
+
+  defaultVariants: {
+    around: 'normal'
+  }
 })

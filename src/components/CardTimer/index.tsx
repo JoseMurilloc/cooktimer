@@ -29,7 +29,7 @@ export function CardTimer ({
         <S.Timer>36:43</S.Timer>
       </main>
       <footer>
-        <S.WrapperIcon>
+        <S.WrapperIcon around='circle'>
           <Pencil
             size="1.5rem" 
             color={DesignSystemColors.primary} 
@@ -42,7 +42,7 @@ export function CardTimer ({
             color={DesignSystemColors.primary_000}       
            />
         </S.PlayerButton>
-        <S.WrapperIcon>
+        <S.WrapperIcon around='circle'>
           <X 
             size="1.5rem" 
             color={DesignSystemColors.primary} 
