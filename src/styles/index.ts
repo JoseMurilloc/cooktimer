@@ -31,6 +31,7 @@ export const {
     },
     fonts: {
       default: 'Nunito, sans-serif',
+      secondary: 'Inter, sans-serif'
     },
     fontSizes: {
       xxs: '0.625rem',

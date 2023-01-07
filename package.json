@@ -13,6 +13,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@radix-ui/react-popover": "1.0.2",
+    "@radix-ui/react-select": "1.1.2",
     "@stitches/react": "^1.2.8",
     "@testing-library/dom": "^8.19.1",
     "@types/node": "18.11.15",

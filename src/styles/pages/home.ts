@@ -16,14 +16,15 @@ export const Main = styled('main', {
   flexDirection: 'column',
   gap: '$10',
 
-  'section h1': {
-    fontWeight: '$bold',
-    fontSize: '$5xl',
-    color: '$text',
-  },
 
   'section p': {
-    color: '$text_400',
+    color: '$text_600',
     fontSize: '$md',
+  },
+
+  '.cardsGrid':{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '$5'
   }
 })

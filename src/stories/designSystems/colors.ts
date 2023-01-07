@@ -16,7 +16,7 @@ export const colors = {
   text: '#171717', 
   text_800: '#292929', 
   text_600: '#444444', 
-  text_400: '#444444', 
+  text_400: '#C9C9C9', 
   text_200: '#EEEEEE', 
   text_000: '#FDFDFD',
 
