@@ -1,11 +1,11 @@
-import { Button } from 'components/Button';
+import { Button } from '../../components/Button';
 import { Plus, X } from 'phosphor-react';
 
 import * as Popover from '@radix-ui/react-popover';
 import * as S from './styles'
-import { Input } from 'components/Input';
-import { InputTimer } from 'components/InputTimer';
-import { SelectedFoodEmoji } from 'components/SelectedFoodEmoji';
+import { Input } from '../../components/Input';
+import { InputTimer } from '../../components/InputTimer';
+import { SelectedFoodEmoji } from '../../components/SelectedFoodEmoji';
 
 export function AddPlayerPopover () {
   return (

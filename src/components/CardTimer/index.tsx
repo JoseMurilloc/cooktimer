@@ -1,4 +1,4 @@
-import { AddPlayerPopover } from "components/Popover";
+import { AddPlayerPopover } from "../../components/Popover";
 import { Pause, Pencil, Plus, X } from "phosphor-react";
 import { colors as DesignSystemColors } from "../../stories/designSystems/colors";
 import { CardTimerProps } from "./types";

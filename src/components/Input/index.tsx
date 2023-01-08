@@ -1,7 +1,7 @@
 import * as S from './styles'
 import { TextFieldProps } from "./types";
 import { WarningCircle } from "phosphor-react";
-import { colors } from "stories/designSystems/colors";
+import { colors } from "../../stories/designSystems/colors";
 
 export function Input ({label, hasError, ...props}: TextFieldProps) {
   return (

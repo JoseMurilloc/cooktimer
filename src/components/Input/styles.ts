@@ -15,7 +15,9 @@ export const ContainerInput = styled('div', {
     opacity: 0.5,
     transition: '0.5s',
     fontSize: 14,
-    color: 'transparent'
+    color: 'transparent',
+    fontFamily: '$default',
+    zIndex: -1,
   },
 
   svg: {
@@ -40,6 +42,7 @@ export const Input = styled('input', {
   },
 
   '&:focus ~ label': {
+    zIndex: 1,
     display: 'block',
     transform: 'translateY(-17px)',
     opacity: 1,
