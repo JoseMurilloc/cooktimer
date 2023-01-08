@@ -38,13 +38,6 @@ export const Content = styled(Popover.Content, {
   flexDirection: 'column',
   gap: '$3',
 
-  footer: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    gap: '$3',
-    marginTop: '1.625rem',
-  },
-
   main: {
     display: 'flex',
   },
@@ -62,7 +55,7 @@ export const Header = styled('header', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  marginBottom: '1.25rem',
+  marginBottom: '2rem',
 
   '.closeButton': {
     backgroundColor: 'transparent',
@@ -90,11 +83,17 @@ export const BorderBackgroundLeft = styled('div', {
 })
 
 export const Form = styled('form', {
-
-  '.inputBox': {
+  main: {
     display: 'flex',
     gap: 17,
     alignItems: 'center',
     marginBottom: 22,
-  }
+  },
+
+  footer: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    gap: '$3',
+    marginTop: '3.25rem',
+  },
 })
