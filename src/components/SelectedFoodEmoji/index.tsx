@@ -1,5 +1,5 @@
 import { CaretDown } from 'phosphor-react'
-import { colors } from 'stories/designSystems/colors'
+import { colors } from '../../stories/designSystems/colors'
 
 import * as SelectPrimitive from '@radix-ui/react-select'
 import * as S from './styles'
