@@ -1,12 +1,11 @@
-import { styled } from "../../styles";
-import * as Popover from '@radix-ui/react-popover';
+import { styled } from '../../styles'
+import * as Popover from '@radix-ui/react-popover'
 
 export const AddPlayerButton = styled(Popover.Trigger, {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
- 
 
   backgroundColor: '$primary_200',
   width: '3.62rem',
@@ -20,7 +19,7 @@ export const AddPlayerButton = styled(Popover.Trigger, {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-   
+
     width: '2.44rem',
     height: '2.44rem',
     borderRadius: '1.75rem',
@@ -39,16 +38,15 @@ export const Content = styled(Popover.Content, {
   gap: '$3',
 
   main: {
-    display: 'flex',
+    display: 'flex'
   },
-
 
   '.arrow': {
     fill: '#FDFDFD',
     stroke: '#FDFDFD',
     width: '2.5rem',
-    height: '1.5625rem',
-  },
+    height: '1.5625rem'
+  }
 })
 
 export const Header = styled('header', {
@@ -68,7 +66,7 @@ export const Header = styled('header', {
     color: '$text',
     fontFamily: '$default',
     fontWeight: '$medium',
-    fontSize: '$xl',
+    fontSize: '$xl'
   }
 })
 
@@ -87,13 +85,13 @@ export const Form = styled('form', {
     display: 'flex',
     gap: 17,
     alignItems: 'center',
-    marginBottom: 22,
+    marginBottom: 22
   },
 
   footer: {
     display: 'flex',
     justifyContent: 'flex-end',
     gap: '$3',
-    marginTop: '3.25rem',
-  },
+    marginTop: '3.25rem'
+  }
 })

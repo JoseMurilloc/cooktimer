@@ -1,5 +1,4 @@
-import { ComponentProps } from "react";
-import { styled } from "../../styles";
+import { styled } from '../../styles'
 
 export const ContainerButton = styled('button', {
   display: 'flex',
@@ -20,11 +19,11 @@ export const ContainerButton = styled('button', {
       outline: {
         color: '$primary',
         backgroundColor: '$text_000',
-        border: '1px solid $primary',
+        border: '1px solid $primary'
       },
       solid: {
         color: '$text_200',
-        backgroundColor: '$primary',
+        backgroundColor: '$primary'
       }
     }
   },

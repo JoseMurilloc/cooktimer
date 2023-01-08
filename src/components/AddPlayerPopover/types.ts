@@ -1,6 +1,6 @@
 export type NewTimerFormData = {
-  icon: string,
-  title: string,
-  timerHour: number;
-  timerMinutes: number;
+  icon: string
+  title: string
+  timerHour: number
+  timerMinutes: number
 }

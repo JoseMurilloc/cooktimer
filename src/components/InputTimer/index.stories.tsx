@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { ComponentStory, Meta } from '@storybook/react'
+
 import { InputTimer } from '.'
 
 export default {
@@ -12,12 +14,12 @@ export default {
         borderRadius: 10,
         height: 300,
         width: 250,
-        padding: 20,
+        padding: 20
       }}>
         {Story()}
       </div>
-    ),
-  ],
+    )
+  ]
 } as Meta<typeof InputTimer>
 
 const Template: ComponentStory<typeof InputTimer> = (args) => (
@@ -26,5 +28,5 @@ const Template: ComponentStory<typeof InputTimer> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  label: 'Label',
+  label: 'Label'
 }

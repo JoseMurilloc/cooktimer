@@ -1,17 +1,19 @@
-import * as S from './styles'
-import { TextFieldProps } from "./types";
-import { WarningCircle } from "phosphor-react";
-import { colors } from "../../stories/designSystems/colors";
-import { useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form'
 
-export function Input ({registerName, label, hasError, ...props}: TextFieldProps) {
+import { WarningCircle } from 'phosphor-react'
+
+import { colors } from '../../stories/designSystems/colors'
+import * as S from './styles'
+import { TextFieldProps } from './types'
+
+export function Input ({ registerName, label, hasError, ...props }: TextFieldProps) {
   const { register } = useFormContext()
 
   return (
     <S.ContainerInput>
-      <S.Input 
-        hasError={hasError} 
-        {...props} 
+      <S.Input
+        hasError={hasError}
+        {...props}
         {...register(registerName)}
       />
       <label>{label}</label>

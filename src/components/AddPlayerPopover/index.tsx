@@ -1,15 +1,15 @@
-import * as Popover from '@radix-ui/react-popover'
-import * as zod from 'zod'
-import * as S from './styles'
+import { useForm, FormProvider } from 'react-hook-form'
 
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as Popover from '@radix-ui/react-popover'
 import { Plus, X } from 'phosphor-react'
+import * as zod from 'zod'
+
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { InputTimer } from '../../components/InputTimer'
-import { SelectedFoodEmoji }  from '../../components/SelectedFoodEmoji'
-import { useForm, FormProvider } from "react-hook-form"
-import { zodResolver } from '@hookform/resolvers/zod'
-
+import { SelectedFoodEmoji } from '../../components/SelectedFoodEmoji'
+import * as S from './styles'
 
 const NewTimerFormValidationSchema = zod.object({
   title: zod.string().min(1, 'Informe o que irá cozinhar'),
@@ -19,19 +19,18 @@ const NewTimerFormValidationSchema = zod.object({
     .max(60, 'Minutos deve ser de no máximo 60 minutos.'),
   timerMinutes: zod
     .number()
-    .max(24, 'Horas deve ser de no máximo 24 minutos.'),
+    .max(24, 'Horas deve ser de no máximo 24 minutos.')
 }).superRefine((data, ctx) => {
   if (!data.timerHour && !data.timerMinutes) {
     ctx.addIssue({
       code: zod.ZodIssueCode.custom,
-      path: ["timerMinutes"],
-      message: "Tempo de cozinha é necessário para se criar um timer",
-    });
+      path: ['timerMinutes'],
+      message: 'Tempo de cozinha é necessário para se criar um timer'
+    })
   }
-});
+})
 
 type NewTimerFormData = zod.infer<typeof NewTimerFormValidationSchema>
-
 
 export function AddPlayerPopover () {
   const newTimer = useForm<NewTimerFormData>({
@@ -40,13 +39,13 @@ export function AddPlayerPopover () {
       icon: 'pan',
       title: '',
       timerHour: 0,
-      timerMinutes: 0,
-    },
+      timerMinutes: 0
+    }
   })
 
   const { register, handleSubmit, watch, formState: { errors } } = newTimer
 
-  const onSubmit = (data: any) => console.log(data)
+  const onSubmit = (data: any) => { console.log(data) }
 
   return (
     <Popover.Root>
@@ -56,9 +55,9 @@ export function AddPlayerPopover () {
         </div>
       </S.AddPlayerButton>
       <Popover.Portal>
-        <S.Content 
+        <S.Content
           sideOffset={110}
-          align="center" 
+          align="center"
           side="right"
         >
           <S.Form onSubmit={handleSubmit(onSubmit)}>
@@ -71,7 +70,7 @@ export function AddPlayerPopover () {
               </S.Header>
               <main>
                 <SelectedFoodEmoji registerName="icon"/>
-                <Input 
+                <Input
                   placeholder="Digite o nome"
                   registerName="title"
                   hasError={!!errors.title}
@@ -86,7 +85,7 @@ export function AddPlayerPopover () {
                   </Button>
                   <Button>
                     Criar
-                  </Button> 
+                  </Button>
               </footer>
             </FormProvider>
           </S.Form>
@@ -95,5 +94,5 @@ export function AddPlayerPopover () {
         </S.Content>
       </Popover.Portal>
     </Popover.Root>
-  );
+  )
 }

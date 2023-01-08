@@ -1,3 +1,3 @@
-export type SelectedFoodEmojiProps = {
-  registerName: string,
+export interface SelectedFoodEmojiProps {
+  registerName: string
 }
