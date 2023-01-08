@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { ComponentStory, Meta } from '@storybook/react'
+
 import { Input } from '.'
 
 export default {
@@ -14,18 +16,18 @@ export default {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 5,
+        borderRadius: 5
       }}>
         <div style={{
           backgroundColor: 'white',
           width: 250,
-          borderRadius: 10,
+          borderRadius: 10
         }}>
           {Story()}
         </div>
       </div>
-    ),
-  ],
+    )
+  ]
 } as Meta<typeof Input>
 
 const Template: ComponentStory<typeof Input> = (args) => (
@@ -34,7 +36,7 @@ const Template: ComponentStory<typeof Input> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  label: 'Label',
+  label: 'Label'
 }
 
 export const Error = Template.bind({})

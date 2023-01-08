@@ -1,4 +1,4 @@
-import { styled } from "../../styles";
+import { styled } from '../../styles'
 
 export const ContainerHeader = styled('header', {
   width: '70rem',
@@ -6,11 +6,11 @@ export const ContainerHeader = styled('header', {
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignContent: 'center',
-  
+
   '.logo': {
     width: '9.375rem',
     backgroundColor: '#D9D9D9',
-    borderRadius: 8,
+    borderRadius: 8
   }
 })
 
@@ -35,4 +35,3 @@ export const ProfileHeader = styled('aside', {
     fontSize: '$md'
   }
 })
-

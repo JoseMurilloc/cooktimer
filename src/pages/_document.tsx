@@ -1,13 +1,14 @@
-import { 
+import {
   Html,
   Head,
   Main,
-  NextScript 
+  NextScript
 } from 'next/document'
-import { getCssText } from '../styles';
 
-export default function Document() {
-    return (
+import { getCssText } from '../styles'
+
+export default function Document () {
+  return (
       <Html>
         <Head>
           <link rel="manifest" href="/manifest.json" />
@@ -23,5 +24,5 @@ export default function Document() {
           <NextScript />
         </body>
       </Html>
-    );
+  )
 }

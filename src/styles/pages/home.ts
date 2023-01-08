@@ -1,4 +1,4 @@
-import { styled } from "..";
+import { styled } from '..'
 
 export const Container = styled('div', {
   display: 'flex',
@@ -7,7 +7,7 @@ export const Container = styled('div', {
   width: '100vw',
   backgroundColor: '#fff',
   paddingTop: '$10',
-  gap: '$20',
+  gap: '$20'
 })
 
 export const Main = styled('main', {
@@ -16,13 +16,12 @@ export const Main = styled('main', {
   flexDirection: 'column',
   gap: '$10',
 
-
   'section p': {
     color: '$text_600',
-    fontSize: '$md',
+    fontSize: '$md'
   },
 
-  '.cardsGrid':{
+  '.cardsGrid': {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
     gap: '$5'

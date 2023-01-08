@@ -1,5 +1,5 @@
-import { createStitches } from "@stitches/react";
-import { colors } from "../stories/designSystems/colors";
+import { createStitches } from '@stitches/react'
+import { colors } from '../stories/designSystems/colors'
 
 export const {
   config,
@@ -9,25 +9,25 @@ export const {
   theme,
   createTheme,
   css,
-  getCssText,
+  getCssText
 } = createStitches({
   theme: {
     media: {
       sm: '(min-width: 640px)',
       md: '(min-width: 768px)',
-      lg: '(min-width: 1024px)',
+      lg: '(min-width: 1024px)'
     },
     breakpoints: {
       sm: '@media (min-width: 640px)',
       md: '@media (min-width: 768px)',
       lg: '@media (min-width: 1024px)',
-      xl: '@media (min-width: 1280px)',
+      xl: '@media (min-width: 1280px)'
     },
     colors,
     fontWeights: {
       regular: '400',
       medium: '500',
-      bold: '700',
+      bold: '700'
     },
     fonts: {
       default: 'Nunito, sans-serif',
@@ -46,7 +46,7 @@ export const {
       '6xl': '3rem',
       '7xl': '4rem',
       '8xl': '4.5rem',
-      '9xl': '6rem',
+      '9xl': '6rem'
     },
     lineHeights: {
       shorter: '125%',
@@ -69,7 +69,7 @@ export const {
       20: '5rem',
       40: '10rem',
       64: '16rem',
-      80: '20rem',
+      80: '20rem'
     }
   }
 })

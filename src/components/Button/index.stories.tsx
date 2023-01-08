@@ -1,4 +1,5 @@
 import { ComponentStory, Meta } from '@storybook/react'
+
 import { Button } from '.'
 
 export default {
@@ -7,8 +8,8 @@ export default {
   decorators: [
     (Story) => (
       Story()
-    ),
-  ],
+    )
+  ]
 } as Meta<typeof Button>
 
 const Template: ComponentStory<typeof Button> = (args) => (

@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { ComponentStory, Meta } from '@storybook/react'
+
 import { AddPlayerPopover } from '.'
 
 export default {
@@ -19,12 +21,12 @@ export default {
       }}>
         {Story()}
       </div>
-    ),
-  ],
+    )
+  ]
 } as Meta<typeof AddPlayerPopover>
 
 const Template: ComponentStory<typeof AddPlayerPopover> = (args) => (
-  <AddPlayerPopover  />
+  <AddPlayerPopover />
 )
 
 export const Default = Template.bind({})

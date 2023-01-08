@@ -12,12 +12,12 @@ export default {
         gap: '$5',
         height: '100vh',
         backgroundColor: 'white',
-        padding: 10,
+        padding: 10
       }}>
         {Story()}
       </section>
-    ),
-  ],
+    )
+  ]
 } as Meta<typeof CardTimer>
 
 const Template: ComponentStory<typeof CardTimer> = (args) => (

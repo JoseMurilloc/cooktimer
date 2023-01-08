@@ -1,24 +1,24 @@
-import { globalCss } from ".";
+import { globalCss } from '.'
 
 export const globalStyles = globalCss({
-  'html': {
+  html: {
     boxSizing: 'border-box',
     fontSize: 16,
     fontFamily: 'Nunito'
   },
-  
+
   '*, body': {
     margin: 0,
-    padding: 0,
+    padding: 0
   },
-  
+
   'ol, ul': {
-    listStyle: 'none',
+    listStyle: 'none'
   },
-  
-  'img': {
+
+  img: {
     maxWidth: '100%',
-    height: 'auto',
+    height: 'auto'
   },
 
   '@media(min-width: 760px)': {
@@ -26,22 +26,22 @@ export const globalStyles = globalCss({
       fontSize: '70%'
     }
   },
-  
+
   '@media(min-width: 1024px)': {
     html: {
-      fontSize: '80%',
+      fontSize: '80%'
     }
   },
-  
+
   '@media(min-width: 1200px)': {
     html: {
       fontSize: '90%'
     }
   },
-  
+
   '@media(min-width: 1600px)': {
     html: {
-      fontSize: '100%',
+      fontSize: '100%'
     }
   }
 })

@@ -1,9 +1,10 @@
-import Head from 'next/head'
-import Header from 'components/Header'
-import * as S from '../styles/pages/home'
 import { CardTimer } from 'components/CardTimer'
+import Header from 'components/Header'
+import Head from 'next/head'
 
-export default function Home() {
+import * as S from '../styles/pages/home'
+
+export default function Home () {
   return (
     <>
       <S.Container>
@@ -17,13 +18,13 @@ export default function Home() {
           <section>
             <h1>Vamos começar a cozinhar?</h1>
             <p>Crie seu primeiro temporizador e defina seus horários.</p>
-          </section> 
+          </section>
           <section className="cardsGrid">
-            <CardTimer 
-              type="edit" 
+            <CardTimer
+              type="edit"
               timer={{
                 title: 'Fazendo arroz na panela'
-              }} 
+              }}
             />
             <CardTimer type="add"/>
           </section>

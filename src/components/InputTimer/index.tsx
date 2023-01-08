@@ -3,9 +3,9 @@ import { InputTimerProps } from './types'
 import { useFormContext } from 'react-hook-form'
 import { NewTimerFormData } from 'components/AddPlayerPopover/types'
 
-export function InputTimer ({label}: InputTimerProps) {
+export function InputTimer ({ label }: InputTimerProps) {
   const { register, formState: { errors } } = useFormContext<NewTimerFormData>()
-  
+
   return (
     <S.ContainerInputTimer>
       <label>{label}</label>
@@ -13,11 +13,11 @@ export function InputTimer ({label}: InputTimerProps) {
         <section className="input">
           <S.Input
             hasError={!!errors.timerHour}
-            placeholder='00' 
-            type="number" 
+            placeholder='00'
+            type="number"
             min={0}
             max={24}
-            {...register('timerHour', {valueAsNumber: true})}
+            {...register('timerHour', { valueAsNumber: true })}
           />
           <span>Horas</span>
         </section>
@@ -28,11 +28,11 @@ export function InputTimer ({label}: InputTimerProps) {
         <section className="input">
           <S.Input
             hasError={!!errors.timerMinutes}
-            placeholder='20' 
-            type="number" 
+            placeholder='20'
+            type="number"
             min={0}
             max={59}
-            {...register('timerMinutes', {valueAsNumber: true})}
+            {...register('timerMinutes', { valueAsNumber: true })}
           />
           <span>Minutos</span>
         </section>

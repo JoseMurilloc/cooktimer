@@ -1,11 +1,11 @@
-import { styled } from "../../styles";
+import { styled } from '../../styles'
 
 export const ContainerInputTimer = styled('aside', {
   label: {
     fontFamily: '$default',
     fontSize: '$sm',
-    fontWeight: '$regular',
-  },
+    fontWeight: '$regular'
+  }
 })
 
 export const ContainerInputs = styled('div', {
@@ -14,8 +14,8 @@ export const ContainerInputs = styled('div', {
 
   '.input': {
     display: 'flex',
-    flexDirection: 'column',  
-    position: 'relative',  
+    flexDirection: 'column',
+    position: 'relative',
 
     span: {
       position: 'absolute',
@@ -24,7 +24,7 @@ export const ContainerInputs = styled('div', {
       fontSize: '$sm',
       fontWeight: '$regular',
       color: '$text_600',
-      fontFamily: '$default',
+      fontFamily: '$default'
     }
   }
 })
@@ -43,19 +43,19 @@ export const Input = styled('input', {
   fontWeight: '$regular',
 
   '&:focus': {
-    border: '1px solid $primary',
+    border: '1px solid $primary'
   },
 
   variants: {
     hasError: {
       true: {
-        border: '1px solid $error',
+        border: '1px solid $error'
       }
     }
   },
 
   defaultVariants: {
-    hasError: false,
+    hasError: false
   }
 })
 
@@ -68,13 +68,11 @@ export const SeparatorDot = styled('section', {
   margin: '0 9px',
   gap: 6,
 
-
   '.dot': {
     backgroundColor: '$text_400',
     width: 5,
     height: 5,
-    borderRadius: 3,
+    borderRadius: 3
   }
 
 })
-

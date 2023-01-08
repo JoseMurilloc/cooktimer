@@ -1,10 +1,11 @@
-import { CaretDown } from 'phosphor-react'
-import { colors } from '../../stories/designSystems/colors'
+import { useFormContext } from 'react-hook-form'
 
 import * as SelectPrimitive from '@radix-ui/react-select'
-import * as S from './styles'
 import Image from 'next/image'
-import { useFormContext } from 'react-hook-form'
+import { CaretDown } from 'phosphor-react'
+
+import { colors } from '../../stories/designSystems/colors'
+import * as S from './styles'
 import { SelectedFoodEmojiProps } from './types'
 
 const OPTIONS = [
@@ -27,7 +28,7 @@ const OPTIONS = [
     contentURL: '/panela.svg',
     name: 'Panela',
     value: 'pan'
-  },
+  }
 ]
 
 export function SelectedFoodEmoji (
@@ -38,7 +39,7 @@ export function SelectedFoodEmoji (
   return (
     <SelectPrimitive.Root
       {...register(registerName)}
-      onValueChange={(value) => setValue(registerName, value)}
+      onValueChange={(value) => { setValue(registerName, value) }}
       defaultValue="pan"
     >
       <S.Trigger>
@@ -54,14 +55,14 @@ export function SelectedFoodEmoji (
       <SelectPrimitive.Portal>
         <S.Content>
           <SelectPrimitive.Viewport>
-            {OPTIONS.map(({value, contentURL}) => (
+            {OPTIONS.map(({ value, contentURL }) => (
               <SelectPrimitive.Item key={value} value={value}>
                 <SelectPrimitive.SelectItemText>
                   <Image
-                    src={contentURL} 
-                    width={25} 
-                    height={25} 
-                    alt="image" 
+                    src={contentURL}
+                    width={25}
+                    height={25}
+                    alt="image"
                   />
                 </SelectPrimitive.SelectItemText>
               </SelectPrimitive.Item>
@@ -70,5 +71,5 @@ export function SelectedFoodEmoji (
         </S.Content>
       </SelectPrimitive.Portal>
     </SelectPrimitive.Root>
-  );
+  )
 }

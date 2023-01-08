@@ -1,5 +1,5 @@
-import * as S from "./styles";
-import { HeaderProps } from "./types";
+import * as S from './styles'
+import { HeaderProps } from './types'
 
 export default function Header (props: HeaderProps) {
   return (
@@ -11,6 +11,5 @@ export default function Header (props: HeaderProps) {
          <span>User name</span>
       </S.ProfileHeader>
     </S.ContainerHeader>
-  );
+  )
 }
-

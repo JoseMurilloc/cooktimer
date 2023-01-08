@@ -1,23 +1,22 @@
-import { AddPlayerPopover } from "../../components/AddPlayerPopover";
-import { Pause, Pencil, Plus, X } from "phosphor-react";
-import { colors as DesignSystemColors } from "../../stories/designSystems/colors";
-import { CardTimerProps } from "./types";
+import { AddPlayerPopover } from '../../components/AddPlayerPopover'
+import { Pause, Pencil, X } from 'phosphor-react'
+import { colors as DesignSystemColors } from '../../stories/designSystems/colors'
+import { CardTimerProps } from './types'
 
-import * as S from "./styles";
+import * as S from './styles'
 
 export function CardTimer ({
   type,
   timer
 }: CardTimerProps) {
-
   if (type === 'add' && !timer) {
     return (
       <S.ContainerCardTimer screenMode={type}>
         <AddPlayerPopover />
       </S.ContainerCardTimer>
-    );
+    )
   }
-  
+
   return (
     <S.ContainerCardTimer screenMode={type}>
       <header>
@@ -32,21 +31,21 @@ export function CardTimer ({
       <footer>
         <S.WrapperIcon around='circle'>
           <Pencil
-            size="1.5rem" 
-            color={DesignSystemColors.primary} 
-          />            
+            size="1.5rem"
+            color={DesignSystemColors.primary}
+          />
         </S.WrapperIcon>
         <S.PlayerButton>
-           <Pause 
+           <Pause
             weight="fill"
-            size="1.5rem" 
-            color={DesignSystemColors.primary_000}       
+            size="1.5rem"
+            color={DesignSystemColors.primary_000}
            />
         </S.PlayerButton>
         <S.WrapperIcon around='circle'>
-          <X 
-            size="1.5rem" 
-            color={DesignSystemColors.primary} 
+          <X
+            size="1.5rem"
+            color={DesignSystemColors.primary}
           />
         </S.WrapperIcon>
       </footer>
@@ -54,4 +53,3 @@ export function CardTimer ({
     </S.ContainerCardTimer>
   )
 }
-
