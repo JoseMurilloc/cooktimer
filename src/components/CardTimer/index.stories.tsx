@@ -6,7 +6,16 @@ export default {
   component: CardTimer,
   decorators: [
     (Story) => (
-      Story()
+      <section style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gap: '$5',
+        height: '100vh',
+        backgroundColor: 'white',
+        padding: 10,
+      }}>
+        {Story()}
+      </section>
     ),
   ],
 } as Meta<typeof CardTimer>

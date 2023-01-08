@@ -80,6 +80,7 @@ export const PlayerButton = styled('button', {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
+  transition: 'all 0.3s ease-in-out',
  
 
   backgroundColor: '$primary',
@@ -98,6 +99,10 @@ export const PlayerButton = styled('button', {
     height: '2.44rem',
     borderRadius: '1.75rem',
     backgroundColor: '$primary'
+  },
+
+  '&:hover': {
+    filter: 'grayscale(25%)',
   }
 })
 
