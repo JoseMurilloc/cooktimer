@@ -4,6 +4,8 @@ import { colors } from '../../stories/designSystems/colors'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import * as S from './styles'
 import Image from 'next/image'
+import { useFormContext } from 'react-hook-form'
+import { SelectedFoodEmojiProps } from './types'
 
 const OPTIONS = [
   {
@@ -28,26 +30,34 @@ const OPTIONS = [
   },
 ]
 
-export function SelectedFoodEmoji ()  {
+export function SelectedFoodEmoji (
+  { registerName }: SelectedFoodEmojiProps
+) {
+  const { register, setValue } = useFormContext()
+
   return (
-    <SelectPrimitive.Root>
-      <S.Trigger defaultValue="cake" >
-        <SelectPrimitive.Value placeholder="Selecione 😋" />
+    <SelectPrimitive.Root
+      {...register(registerName)}
+      onValueChange={(value) => setValue(registerName, value)}
+      defaultValue="pan"
+    >
+      <S.Trigger>
+        <SelectPrimitive.Value />
         <SelectPrimitive.Icon>
           <CaretDown
             color={colors.text_600}
-            size={15} 
-            weight="fill" 
+            size={15}
+            weight="fill"
           />
         </SelectPrimitive.Icon>
       </S.Trigger>
       <SelectPrimitive.Portal>
         <S.Content>
           <SelectPrimitive.Viewport>
-            {OPTIONS.map(({value, contentURL, name}) => (
+            {OPTIONS.map(({value, contentURL}) => (
               <SelectPrimitive.Item key={value} value={value}>
                 <SelectPrimitive.SelectItemText>
-                  <Image 
+                  <Image
                     src={contentURL} 
                     width={25} 
                     height={25} 

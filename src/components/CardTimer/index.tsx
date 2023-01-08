@@ -1,7 +1,8 @@
-import { AddPlayerPopover } from "../../components/Popover";
+import { AddPlayerPopover } from "../../components/AddPlayerPopover";
 import { Pause, Pencil, Plus, X } from "phosphor-react";
 import { colors as DesignSystemColors } from "../../stories/designSystems/colors";
 import { CardTimerProps } from "./types";
+
 import * as S from "./styles";
 
 export function CardTimer ({
