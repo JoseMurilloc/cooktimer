@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import Image from 'next/image'
 import { CaretDown } from 'phosphor-react'
+import { getUrlByValueSelected } from 'utils/getUrlByValueSelected'
 
 import { colors } from '../../stories/designSystems/colors'
 import * as S from './styles'
@@ -10,22 +11,18 @@ import { SelectedFoodEmojiProps } from './types'
 
 const OPTIONS = [
   {
-    contentURL: '/pudim.svg',
     name: 'Bolo',
     value: 'cake'
   },
   {
-    contentURL: '/frigideira.svg',
     name: 'Frigideira',
     value: 'skillet'
   },
   {
-    contentURL: '/panelaPressao.svg',
     name: 'Panela pressão',
     value: 'pressureCooker'
   },
   {
-    contentURL: '/panela.svg',
     name: 'Panela',
     value: 'pan'
   }
@@ -55,11 +52,11 @@ export function SelectedFoodEmoji (
       <SelectPrimitive.Portal>
         <S.Content>
           <SelectPrimitive.Viewport>
-            {OPTIONS.map(({ value, contentURL }) => (
+            {OPTIONS.map(({ value }) => (
               <SelectPrimitive.Item key={value} value={value}>
                 <SelectPrimitive.SelectItemText>
                   <Image
-                    src={contentURL}
+                    src={getUrlByValueSelected(value)}
                     width={25}
                     height={25}
                     alt="image"
