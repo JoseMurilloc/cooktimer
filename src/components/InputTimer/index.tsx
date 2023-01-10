@@ -1,7 +1,9 @@
+import { useFormContext } from 'react-hook-form'
+
+import { NewTimerFormData } from 'components/AddPlayerPopover/types'
+
 import * as S from './styles'
 import { InputTimerProps } from './types'
-import { useFormContext } from 'react-hook-form'
-import { NewTimerFormData } from 'components/AddPlayerPopover/types'
 
 export function InputTimer ({ label }: InputTimerProps) {
   const { register, formState: { errors } } = useFormContext<NewTimerFormData>()

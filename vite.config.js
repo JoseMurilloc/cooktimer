@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
-import react from 'vite'
 import { defaultConfig } from '@vitejs/plugin-react'
+import react from 'vite'
 
 export default defaultConfig({
   plugins: [react()]
