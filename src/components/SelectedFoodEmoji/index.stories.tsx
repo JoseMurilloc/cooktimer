@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { ComponentStory, Meta } from '@storybook/react'
+
 import { SelectedFoodEmoji } from '.'
 
 export default {
