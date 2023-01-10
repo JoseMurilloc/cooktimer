@@ -1,10 +1,13 @@
 import { CardTimer } from 'components/CardTimer'
 import Header from 'components/Header'
+import { useCookTimer } from 'hooks/useCookTimer'
 import Head from 'next/head'
 
 import * as S from '../styles/pages/home'
 
 export default function Home () {
+  const { getAllCookTimers } = useCookTimer()
+  const timers = getAllCookTimers()
   return (
     <>
       <S.Container>
@@ -20,13 +23,10 @@ export default function Home () {
             <p>Crie seu primeiro temporizador e defina seus horários.</p>
           </section>
           <section className="cardsGrid">
-            <CardTimer
-              type="edit"
-              timer={{
-                title: 'Fazendo arroz na panela'
-              }}
-            />
             <CardTimer type="add"/>
+            {timers.map(timer => (
+              <CardTimer key={timer.uuid} timer={timer} type="edit" />
+            ))}
           </section>
         </S.Main>
       </S.Container>
