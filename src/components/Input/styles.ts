@@ -1,4 +1,4 @@
-import { styled } from "../../styles";
+import { styled } from '../../styles'
 
 export const ContainerInput = styled('div', {
   display: 'flex',
@@ -6,7 +6,6 @@ export const ContainerInput = styled('div', {
   position: 'relative',
   borderRadius: 8,
   transition: 'border 0.3s ease-in-out',
-
 
   label: {
     position: 'absolute',
@@ -17,16 +16,15 @@ export const ContainerInput = styled('div', {
     fontSize: 14,
     color: 'transparent',
     fontFamily: '$default',
-    zIndex: -1,
+    zIndex: -1
   },
 
   svg: {
     position: 'absolute',
     right: 10,
-    top: '0 auto',
+    top: '0 auto'
   }
 })
-
 
 export const Input = styled('input', {
   border: '1px solid $text_400',
@@ -38,7 +36,7 @@ export const Input = styled('input', {
   outline: 'none',
 
   '&:focus': {
-    border: '1px solid $primary',
+    border: '1px solid $primary'
   },
 
   '&:focus ~ label': {
@@ -51,7 +49,6 @@ export const Input = styled('input', {
     backgroundColor: 'white',
     padding: '0 5px'
   },
-
 
   variants: {
     hasError: {
@@ -68,9 +65,9 @@ export const Input = styled('input', {
         },
 
         '&:focus': {
-          border: '1px solid $error',
-        },
-      },
+          border: '1px solid $error'
+        }
+      }
     }
   }
 })
