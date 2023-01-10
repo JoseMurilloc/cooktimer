@@ -2,6 +2,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as Popover from '@radix-ui/react-popover'
+import { useCookTimer } from 'hooks/useCookTimer'
 import { Plus, X } from 'phosphor-react'
 import * as zod from 'zod'
 
@@ -16,10 +17,10 @@ const NewTimerFormValidationSchema = zod.object({
   icon: zod.string(),
   timerHour: zod
     .number()
-    .max(60, 'Minutos deve ser de no máximo 60 minutos.'),
+    .max(24, 'Horas deve ser de no máximo 24 minutos.'),
   timerMinutes: zod
     .number()
-    .max(24, 'Horas deve ser de no máximo 24 minutos.')
+    .max(60, 'Minutos deve ser de no máximo 60 minutos.')
 }).superRefine((data, ctx) => {
   if (!data.timerHour && !data.timerMinutes) {
     ctx.addIssue({
@@ -33,6 +34,8 @@ const NewTimerFormValidationSchema = zod.object({
 type NewTimerFormData = zod.infer<typeof NewTimerFormValidationSchema>
 
 export function AddPlayerPopover () {
+  const { createCookTimer } = useCookTimer()
+
   const newTimer = useForm<NewTimerFormData>({
     resolver: zodResolver(NewTimerFormValidationSchema),
     defaultValues: {
@@ -43,9 +46,11 @@ export function AddPlayerPopover () {
     }
   })
 
-  const { register, handleSubmit, watch, formState: { errors } } = newTimer
+  const { handleSubmit, formState: { errors } } = newTimer
 
-  const onSubmit = (data: any) => { console.log(data) }
+  const onSubmit = (data: NewTimerFormData) => {
+    createCookTimer(data)
+  }
 
   return (
     <Popover.Root>
