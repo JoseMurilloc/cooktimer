@@ -1,4 +1,4 @@
-import { styled } from "../../styles";
+import { styled } from '../../styles'
 
 export const ContainerCardTimer = styled('div', {
   position: 'relative',
@@ -13,14 +13,14 @@ export const ContainerCardTimer = styled('div', {
 
   width: '15rem',
   height: '14rem',
-  
+
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
     paddingBottom: '$4',
-    borderBottom: '0.6px solid #EEEEEE',
+    borderBottom: '0.6px solid #EEEEEE'
   },
 
   main: {
@@ -33,18 +33,18 @@ export const ContainerCardTimer = styled('div', {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    gap: '$3',
+    gap: '$3'
   },
 
   variants: {
     screenMode: {
       add: {
         border: '1px dashed #C9C9C9',
-        justifyContent: 'center',
+        justifyContent: 'center'
       },
       edit: {
         justifyContent: 'space-between',
-        border: '1px solid #C9C9C9',
+        border: '1px solid #C9C9C9'
       }
     }
   }
@@ -55,14 +55,6 @@ export const TimerName = styled('span', {
   fontWeight: '$medium',
   fontSize: '$md',
   fontFamily: '$default'
-})
-
-
-export const Timer = styled('h1', {
-  color: '$text',
-  fontWeight: '$bold',
-  fontFamily: '$secondary',
-  fontSize: '$7xl',
 })
 
 export const BackgroundBorder = styled('div', {
@@ -81,7 +73,6 @@ export const PlayerButton = styled('button', {
   justifyContent: 'center',
   alignItems: 'center',
   transition: 'all 0.3s ease-in-out',
- 
 
   backgroundColor: '$primary',
   padding: '$4',
@@ -94,7 +85,7 @@ export const PlayerButton = styled('button', {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-   
+
     width: '2.44rem',
     height: '2.44rem',
     borderRadius: '1.75rem',
@@ -102,11 +93,9 @@ export const PlayerButton = styled('button', {
   },
 
   '&:hover': {
-    filter: 'grayscale(25%)',
+    filter: 'grayscale(25%)'
   }
 })
-
-
 
 export const WrapperIcon = styled('div', {
   display: 'flex',
@@ -121,10 +110,10 @@ export const WrapperIcon = styled('div', {
   variants: {
     around: {
       circle: {
-        borderRadius: '50%',
+        borderRadius: '50%'
       },
       normal: {
-        borderRadius: 10,
+        borderRadius: 10
       }
     }
   },

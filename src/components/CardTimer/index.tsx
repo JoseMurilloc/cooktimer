@@ -1,9 +1,12 @@
-import { AddPlayerPopover } from '../../components/AddPlayerPopover'
+import { CountDownTimer } from 'components/CountDownTimer'
+import Image from 'next/image'
 import { Pause, Pencil, X } from 'phosphor-react'
-import { colors as DesignSystemColors } from '../../stories/designSystems/colors'
-import { CardTimerProps } from './types'
+import { getUrlByValueSelected } from 'utils/getUrlByValueSelected'
 
+import { AddPlayerPopover } from '../../components/AddPlayerPopover'
+import { colors as DesignSystemColors } from '../../stories/designSystems/colors'
 import * as S from './styles'
+import { CardTimerProps } from './types'
 
 export function CardTimer ({
   type,
@@ -17,16 +20,28 @@ export function CardTimer ({
     )
   }
 
+  if (!timer) {
+    return null
+  }
+
   return (
     <S.ContainerCardTimer screenMode={type}>
       <header>
         <S.TimerName>{timer?.title}</S.TimerName>
         <S.WrapperIcon>
-          <img src="https://i.imgur.com/UFcoguD.png" alt="image" />
+          <Image
+            src={getUrlByValueSelected(timer.icon)}
+            width={25}
+            height={25}
+            alt="image"
+          />
         </S.WrapperIcon>
       </header>
       <main>
-        <S.Timer>36:43</S.Timer>
+        <CountDownTimer
+          timeInSeconds={timer?.timer}
+          status={timer.status}
+        />
       </main>
       <footer>
         <S.WrapperIcon around='circle'>
