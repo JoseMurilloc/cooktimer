@@ -12,6 +12,10 @@ export const globalStyles = globalCss({
     padding: 0
   },
 
+  body: {
+    height: '100vh'
+  },
+
   'ol, ul': {
     listStyle: 'none'
   },
