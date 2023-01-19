@@ -31,8 +31,11 @@ export const CountDownTimer = ({ timeInSeconds, status }: CountDownTimerProps) =
   }, [minutes])
 
   const formattedHour = useMemo(() => {
+    if (hour === 0) {
+      return ''
+    }
     if (hour < 10) {
-      return `0${hour}`
+      return `0${hour}:`
     }
 
     return hour
@@ -42,7 +45,7 @@ export const CountDownTimer = ({ timeInSeconds, status }: CountDownTimerProps) =
     if (status === 'run') {
       setTimeout(() => { setTimer(prevTimer => (prevTimer -= 1)) }, 1000)
     }
-  }, [])
+  }, [status])
 
   useEffect(() => {
     if (timer > 0) {
@@ -50,5 +53,5 @@ export const CountDownTimer = ({ timeInSeconds, status }: CountDownTimerProps) =
     }
   }, [timer, countDown])
 
-  return <S.TimerLabel>{`${formattedHour}:${formattedMinutes}:${formattedSeconds}`}</S.TimerLabel>
+  return <S.TimerLabel>{`${formattedHour}${formattedMinutes}:${formattedSeconds}`}</S.TimerLabel>
 }
