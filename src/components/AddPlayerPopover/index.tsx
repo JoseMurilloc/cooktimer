@@ -1,9 +1,10 @@
+import { useRef } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as Popover from '@radix-ui/react-popover'
 import { useCookTimer } from 'hooks/useCookTimer'
-import { Plus, X } from 'phosphor-react'
+import { X } from 'phosphor-react'
 import * as zod from 'zod'
 
 import { Button } from '../../components/Button'
@@ -11,6 +12,7 @@ import { Input } from '../../components/Input'
 import { InputTimer } from '../../components/InputTimer'
 import { SelectedFoodEmoji } from '../../components/SelectedFoodEmoji'
 import * as S from './styles'
+import { AddPlayerPopoverProps } from './types'
 
 const NewTimerFormValidationSchema = zod.object({
   title: zod.string().min(1, 'Informe o que irá cozinhar'),
@@ -33,7 +35,7 @@ const NewTimerFormValidationSchema = zod.object({
 
 type NewTimerFormData = zod.infer<typeof NewTimerFormValidationSchema>
 
-export function AddPlayerPopover () {
+export function AddPlayerPopover ({ children }: AddPlayerPopoverProps) {
   const { createCookTimer } = useCookTimer()
 
   const newTimer = useForm<NewTimerFormData>({
@@ -54,11 +56,9 @@ export function AddPlayerPopover () {
 
   return (
     <Popover.Root>
-      <S.AddPlayerButton className="PopoverTrigger">
-        <div className="content">
-          <Plus size={22} weight="fill" color="#FFF9F2" />
-        </div>
-      </S.AddPlayerButton>
+      <Popover.Trigger className="PopoverTrigger" asChild>
+        {children}
+      </Popover.Trigger>
       <Popover.Portal>
         <S.Content
           sideOffset={110}
@@ -94,8 +94,8 @@ export function AddPlayerPopover () {
               </footer>
             </FormProvider>
           </S.Form>
-         <Popover.Arrow className="arrow"/>
-         <S.BorderBackgroundLeft />
+          <Popover.Arrow className="arrow"/>
+          <S.BorderBackgroundLeft />
         </S.Content>
       </Popover.Portal>
     </Popover.Root>

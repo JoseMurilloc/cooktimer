@@ -1,5 +1,5 @@
-import { ButtonProps } from './types'
 import * as S from './styles'
+import { ButtonProps } from './types'
 
 export function Button ({ children, layout, ...props }: ButtonProps) {
   return (

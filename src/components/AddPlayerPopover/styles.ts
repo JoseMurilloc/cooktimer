@@ -1,31 +1,6 @@
-import { styled } from '../../styles'
 import * as Popover from '@radix-ui/react-popover'
 
-export const AddPlayerButton = styled(Popover.Trigger, {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-
-  backgroundColor: '$primary_200',
-  width: '3.62rem',
-  height: '3.62rem',
-  borderRadius: '1.75rem',
-  border: 'none',
-  cursor: 'pointer',
-
-  '.content': {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    width: '2.44rem',
-    height: '2.44rem',
-    borderRadius: '1.75rem',
-    backgroundColor: '$primary'
-  }
-})
+import { styled } from '../../styles'
 
 export const Content = styled(Popover.Content, {
   backgroundColor: '#FDFDFD',
