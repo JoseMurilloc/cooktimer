@@ -1,6 +1,7 @@
 import { CountDownTimer } from 'components/CountDownTimer'
+import { useCookTimer } from 'hooks/useCookTimer'
 import Image from 'next/image'
-import { Pause, Pencil, X } from 'phosphor-react'
+import { Pause, Pencil, Play, Plus, X } from 'phosphor-react'
 import { getUrlByValueSelected } from 'utils/getUrlByValueSelected'
 
 import { AddPlayerPopover } from '../../components/AddPlayerPopover'
@@ -12,10 +13,18 @@ export function CardTimer ({
   type,
   timer
 }: CardTimerProps) {
+  const { toggleTimer } = useCookTimer()
+
   if (type === 'add' && !timer) {
     return (
-      <S.ContainerCardTimer screenMode={type}>
-        <AddPlayerPopover />
+      <S.ContainerCardTimer focusPopover={false} screenMode={type}>
+        <AddPlayerPopover>
+          <S.Add>
+            <div className="content">
+              <Plus size={22} weight="fill" color="#FFF9F2" />
+            </div>
+          </S.Add>
+        </AddPlayerPopover>
       </S.ContainerCardTimer>
     )
   }
@@ -27,19 +36,19 @@ export function CardTimer ({
   return (
     <S.ContainerCardTimer screenMode={type}>
       <header>
-        <S.TimerName>{timer?.title}</S.TimerName>
-        <S.WrapperIcon>
-          <Image
-            src={getUrlByValueSelected(timer.icon)}
-            width={25}
-            height={25}
-            alt="image"
-          />
-        </S.WrapperIcon>
+        <S.TimerName>{timer.title}</S.TimerName>
       </header>
       <main>
+        <S.WrapperImage>
+          <Image
+            src={getUrlByValueSelected(timer.icon)}
+            width={116}
+            height={70}
+            alt="image"
+          />
+        </S.WrapperImage>
         <CountDownTimer
-          timeInSeconds={timer?.timer}
+          timeInSeconds={timer.timer}
           status={timer.status}
         />
       </main>
@@ -50,12 +59,22 @@ export function CardTimer ({
             color={DesignSystemColors.primary}
           />
         </S.WrapperIcon>
-        <S.PlayerButton>
-           <Pause
-            weight="fill"
-            size="1.5rem"
-            color={DesignSystemColors.primary_000}
-           />
+        <S.PlayerButton onClick={() => { toggleTimer(timer.uuid) }}>
+           {timer.status === 'run'
+             ? (
+                <Pause
+                  weight="fill"
+                  size="1.5rem"
+                  color={DesignSystemColors.primary_000}
+                />
+               )
+             : (
+                <Play
+                  weight="fill"
+                  size="1.5rem"
+                  color={DesignSystemColors.primary_000}
+                />
+               )}
         </S.PlayerButton>
         <S.WrapperIcon around='circle'>
           <X

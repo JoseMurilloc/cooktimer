@@ -5,11 +5,10 @@ import { TimerDTO } from 'dtos/Timer'
 
 export interface ICookTimerProps {
   createCookTimer: (timer: CreateCookTimerDTO) => void
+  toggleTimer: (timerId: string) => void
   getAllCookTimers: () => TimerDTO[]
 }
 
 export interface ICookTimerProviderProps {
   children: ReactNode
 }
-
-export type TStatus = 'idle' | 'loading' | 'success' | 'error'

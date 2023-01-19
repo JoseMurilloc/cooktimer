@@ -13,9 +13,15 @@ const CookTimerContext = createContext<ICookTimerProps>(
 const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
   const [timers, setTimers] = useState<TimerDTO[]>([])
 
-  // const pauseCookTimer = useCallback((timerId) =>{
-
-  // }, [])
+  const toggleTimer = useCallback((timerId: string) => {
+    setTimers(currentTimers => currentTimers.map(timer => {
+      if (timer.uuid !== timerId) return timer
+      return {
+        ...timer,
+        status: timer.status === 'paused' ? 'run' : 'paused'
+      }
+    }))
+  }, [])
 
   const getAllCookTimers = () => timers
 
@@ -38,6 +44,7 @@ const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
   return (
     <CookTimerContext.Provider value={{
       createCookTimer,
+      toggleTimer,
       getAllCookTimers
     }}>
       {children}

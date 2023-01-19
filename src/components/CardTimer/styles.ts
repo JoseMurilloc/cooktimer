@@ -12,21 +12,21 @@ export const ContainerCardTimer = styled('div', {
   borderRadius: 7,
 
   width: '15rem',
-  height: '14rem',
 
   header: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    paddingBottom: '$4',
-    borderBottom: '0.6px solid #EEEEEE'
+    paddingBottom: '$4'
   },
 
   main: {
     width: '100%',
     display: 'flex',
-    justifyContent: 'center'
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   footer: {
@@ -46,8 +46,54 @@ export const ContainerCardTimer = styled('div', {
         justifyContent: 'space-between',
         border: '1px solid #C9C9C9'
       }
+    },
+    focusPopover: {
+      true: {
+        backgroundColor: '$primary_000'
+      }
     }
+  },
+
+  defaultVariants: {
+    focusPopover: false
   }
+})
+
+export const Add = styled('button', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+
+  backgroundColor: '$primary_200',
+  width: '3.62rem',
+  height: '3.62rem',
+  borderRadius: '1.75rem',
+  border: 'none',
+  cursor: 'pointer',
+
+  '.content': {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    width: '2.44rem',
+    height: '2.44rem',
+    borderRadius: '1.75rem',
+    backgroundColor: '$primary'
+  }
+})
+
+export const WrapperImage = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  minHeight: '8rem',
+  alignItems: 'center',
+  // padding: '1.8125rem auto',
+  backgroundColor: '$primary_200',
+  width: '100%',
+  borderRadius: 15
 })
 
 export const TimerName = styled('span', {
@@ -97,13 +143,14 @@ export const PlayerButton = styled('button', {
   }
 })
 
-export const WrapperIcon = styled('div', {
+export const WrapperIcon = styled('button', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
 
   backgroundColor: '$primary_200',
   padding: '$3 $2',
+  border: 'none',
 
   cursor: 'pointer',
 
