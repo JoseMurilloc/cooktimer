@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
+import { getFormattedSeconds } from 'utils/getFormattedSeconds'
+
 import * as S from './styles'
 
 type CountDownTimerProps = {
@@ -10,9 +12,11 @@ type CountDownTimerProps = {
 export const CountDownTimer = ({ timeInSeconds, status }: CountDownTimerProps) => {
   const [timer, setTimer] = useState(timeInSeconds)
 
-  const hour = Math.floor(Math.floor(timer / 60) / 60)
-  const minutes = Math.floor(timer / 60) - (60 * hour)
-  const seconds = timer % 60
+  const {
+    hour,
+    minutes,
+    seconds
+  } = getFormattedSeconds(timer)
 
   const formattedSeconds = useMemo(() => {
     if (seconds < 10) {
