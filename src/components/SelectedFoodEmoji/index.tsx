@@ -29,7 +29,7 @@ const OPTIONS = [
 ]
 
 export function SelectedFoodEmoji (
-  { registerName }: SelectedFoodEmojiProps
+  { registerName, defaultSelected = 'pan' }: SelectedFoodEmojiProps
 ) {
   const { register, setValue } = useFormContext()
 
@@ -37,7 +37,7 @@ export function SelectedFoodEmoji (
     <SelectPrimitive.Root
       {...register(registerName)}
       onValueChange={(value) => { setValue(registerName, value) }}
-      defaultValue="pan"
+      defaultValue={defaultSelected}
     >
       <S.Trigger>
         <SelectPrimitive.Value />
