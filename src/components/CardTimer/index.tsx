@@ -54,10 +54,12 @@ export function CardTimer ({
       </main>
       <footer>
         <S.WrapperIcon around='circle'>
-          <Pencil
-            size="1.5rem"
-            color={DesignSystemColors.primary}
-          />
+          <AddPlayerPopover timer={timer} mode="edit">
+            <Pencil
+              size="1.5rem"
+              color={DesignSystemColors.primary}
+            />
+          </AddPlayerPopover>
         </S.WrapperIcon>
         <S.PlayerButton onClick={() => { toggleTimer(timer.uuid) }}>
            {timer.status === 'run'
