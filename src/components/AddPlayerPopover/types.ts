@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
 
+import { TimerDTO } from 'dtos/Timer'
+
 export type NewTimerFormData = {
   icon: string
   title: string
@@ -9,4 +11,6 @@ export type NewTimerFormData = {
 
 export type AddPlayerPopoverProps = {
   children: ReactNode
+  mode?: string
+  timer?: TimerDTO
 }

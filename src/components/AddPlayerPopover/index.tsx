@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -11,8 +11,11 @@ import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { InputTimer } from '../../components/InputTimer'
 import { SelectedFoodEmoji } from '../../components/SelectedFoodEmoji'
+import { getFormattedSeconds } from '../../utils/getFormattedSeconds'
 import * as S from './styles'
 import { AddPlayerPopoverProps } from './types'
+
+type NewTimerFormData = zod.infer<typeof NewTimerFormValidationSchema>
 
 const NewTimerFormValidationSchema = zod.object({
   title: zod.string().min(1, 'Informe o que irá cozinhar'),
@@ -33,11 +36,7 @@ const NewTimerFormValidationSchema = zod.object({
   }
 })
 
-type NewTimerFormData = zod.infer<typeof NewTimerFormValidationSchema>
-
-export function AddPlayerPopover ({ children }: AddPlayerPopoverProps) {
-  const { createCookTimer } = useCookTimer()
-
+export function AddPlayerPopover ({ children, mode = 'add', timer }: AddPlayerPopoverProps) {
   const newTimer = useForm<NewTimerFormData>({
     resolver: zodResolver(NewTimerFormValidationSchema),
     defaultValues: {
@@ -48,10 +47,40 @@ export function AddPlayerPopover ({ children }: AddPlayerPopoverProps) {
     }
   })
 
-  const { handleSubmit, formState: { errors } } = newTimer
+  const { createCookTimer } = useCookTimer()
+  const { reset, handleSubmit, setValue, formState: { errors } } = newTimer
 
   const onSubmit = (data: NewTimerFormData) => {
     createCookTimer(data)
+    reset()
+  }
+
+  useEffect(() => {
+    if (mode === 'edit') {
+      setInitializeValues()
+    }
+  }, [])
+
+  const setInitializeValues = useCallback(() => {
+    if (!timer) {
+      return
+    }
+
+    const { hour, minutes } = getFormattedSeconds(timer.timer)
+    const { icon, title } = timer
+
+    setValue('icon', icon)
+    setValue('title', title)
+    setValue('timerHour', hour)
+    setValue('timerMinutes', minutes)
+  }, [timer])
+
+  const renderTitle = () => {
+    if (mode === 'edit') {
+      return 'Editar'
+    }
+
+    return 'Criar timer de cozinha'
   }
 
   return (
@@ -68,13 +97,13 @@ export function AddPlayerPopover ({ children }: AddPlayerPopoverProps) {
           <S.Form onSubmit={handleSubmit(onSubmit)}>
             <FormProvider {...newTimer}>
               <S.Header>
-                <h1>Criar timer de cozinha</h1>
+                <h1>{renderTitle()}</h1>
                 <Popover.Close className="closeButton">
                   <X color="#444" size={16} weight="fill" />
                 </Popover.Close>
               </S.Header>
               <main>
-                <SelectedFoodEmoji registerName="icon"/>
+                <SelectedFoodEmoji defaultSelected={timer?.icon} registerName="icon"/>
                 <Input
                   placeholder="Digite o nome"
                   registerName="title"
@@ -85,14 +114,14 @@ export function AddPlayerPopover ({ children }: AddPlayerPopoverProps) {
               </main>
               <InputTimer label="label"/>
               <footer>
-                  <Button type="submit" layout='outline'>
-                    Cancelar
-                  </Button>
-                  <Button>
-                    Criar
-                  </Button>
+                <Button type="submit" layout='outline'>
+                  Cancelar
+                </Button>
+                <Button>
+                  {mode === 'edit' ? 'Salvar alterações' : 'Criar'}
+                </Button>
               </footer>
-            </FormProvider>
+             </FormProvider>
           </S.Form>
           <Popover.Arrow className="arrow"/>
           <S.BorderBackgroundLeft />
