@@ -13,14 +13,26 @@ const CookTimerContext = createContext<ICookTimerProps>(
 const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
   const [timers, setTimers] = useState<TimerDTO[]>([])
 
-  const toggleTimer = useCallback((timerId: string) => {
-    setTimers(currentTimers => currentTimers.map(timer => {
-      if (timer.uuid !== timerId) return timer
-      return {
-        ...timer,
-        status: timer.status === 'paused' ? 'run' : 'paused'
-      }
-    }))
+  const removeCookTimer = useCallback((timerId: string) => {
+    setTimers(
+      currentTimers =>
+        currentTimers.filter(
+          timer => timer.uuid !== timerId
+        )
+    )
+  }, [])
+
+  const togglePlayTimer = useCallback((timerId: string) => {
+    setTimers(
+      currentTimers =>
+        currentTimers.map(timer => {
+          if (timer.uuid !== timerId) return timer
+          return {
+            ...timer,
+            status: timer.status === 'paused' ? 'run' : 'paused'
+          }
+        })
+    )
   }, [])
 
   const getAllCookTimers = () => timers
@@ -37,15 +49,14 @@ const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
       status: 'run' as 'run'
     }
 
-    console.log({ createTimer })
-
     setTimers(presetTimers => [...presetTimers, createTimer])
   }, [])
   return (
     <CookTimerContext.Provider value={{
       createCookTimer,
-      toggleTimer,
-      getAllCookTimers
+      togglePlayTimer,
+      getAllCookTimers,
+      removeCookTimer
     }}>
       {children}
     </CookTimerContext.Provider>
