@@ -14,7 +14,7 @@ export function CardTimer ({
   type,
   timer
 }: CardTimerProps) {
-  const { togglePlayTimer } = useCookTimer()
+  const { togglePlayTimer, pauseTimer } = useCookTimer()
 
   if (type === 'add' && !timer) {
     return (
@@ -56,10 +56,12 @@ export function CardTimer ({
       <footer>
         <S.WrapperIcon around='circle'>
           <AddPlayerPopover timer={timer} mode="edit">
-            <Pencil
-              size="1.5rem"
-              color={DesignSystemColors.primary}
-            />
+            <button onClick={() => { pauseTimer(timer.uuid) }}>
+              <Pencil
+                size="1.5rem"
+                color={DesignSystemColors.primary}
+              />
+            </button>
           </AddPlayerPopover>
         </S.WrapperIcon>
         <S.PlayerButton onClick={() => { togglePlayTimer(timer.uuid) }}>

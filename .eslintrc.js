@@ -25,6 +25,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-assertions': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/consistent-type-definitions': 'off',
+    '@typescript-eslint/no-misused-promises': 'off',
     'import-helpers/order-imports': [
       'warn',
       {
