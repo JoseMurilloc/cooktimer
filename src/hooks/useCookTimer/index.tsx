@@ -13,14 +13,36 @@ const CookTimerContext = createContext<ICookTimerProps>(
 const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
   const [timers, setTimers] = useState<TimerDTO[]>([])
 
-  const toggleTimer = useCallback((timerId: string) => {
-    setTimers(currentTimers => currentTimers.map(timer => {
-      if (timer.uuid !== timerId) return timer
-      return {
-        ...timer,
-        status: timer.status === 'paused' ? 'run' : 'paused'
-      }
-    }))
+  const removeCookTimer = useCallback((timerId: string) => {
+    setTimers(
+      currentTimers =>
+        currentTimers.filter(
+          timer => timer.uuid !== timerId
+        )
+    )
+  }, [])
+
+  const updatePlayTimer = useCallback((timerUpdated: TimerDTO) => {
+    setTimers(
+      currentTimers =>
+        currentTimers.map(currentTimer => {
+          if (currentTimer.uuid !== timerUpdated.uuid) return currentTimer
+          return timerUpdated
+        })
+    )
+  }, [])
+
+  const togglePlayTimer = useCallback((timerId: string) => {
+    setTimers(
+      currentTimers =>
+        currentTimers.map(timer => {
+          if (timer.uuid !== timerId) return timer
+          return {
+            ...timer,
+            status: timer.status === 'paused' ? 'run' : 'paused'
+          }
+        })
+    )
   }, [])
 
   const getAllCookTimers = () => timers
@@ -37,15 +59,34 @@ const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
       status: 'run' as 'run'
     }
 
-    console.log({ createTimer })
-
     setTimers(presetTimers => [...presetTimers, createTimer])
   }, [])
+
+  const pauseTimer = useCallback((timerId: string) => {
+    console.log(timerId)
+
+    setTimers(
+      currentTimers =>
+        currentTimers.map(timer => {
+          if (timer.uuid !== timerId) return timer
+          return {
+            ...timer,
+            status: 'paused'
+          }
+        })
+    )
+
+    return true
+  }, [])
+
   return (
     <CookTimerContext.Provider value={{
       createCookTimer,
-      toggleTimer,
-      getAllCookTimers
+      togglePlayTimer,
+      getAllCookTimers,
+      removeCookTimer,
+      updatePlayTimer,
+      pauseTimer
     }}>
       {children}
     </CookTimerContext.Provider>

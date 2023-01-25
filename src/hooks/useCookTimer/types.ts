@@ -5,7 +5,10 @@ import { TimerDTO } from 'dtos/Timer'
 
 export interface ICookTimerProps {
   createCookTimer: (timer: CreateCookTimerDTO) => void
-  toggleTimer: (timerId: string) => void
+  togglePlayTimer: (timerId: string) => void
+  updatePlayTimer: (timerUpdated: TimerDTO) => void
+  removeCookTimer: (timerId: string) => void
+  pauseTimer: (timerId: string) => void
   getAllCookTimers: () => TimerDTO[]
 }
 

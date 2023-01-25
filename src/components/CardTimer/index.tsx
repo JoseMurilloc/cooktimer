@@ -1,4 +1,5 @@
 import { CountDownTimer } from 'components/CountDownTimer'
+import { DeleteTimerAlert } from 'components/DeleteTimerAlert'
 import { useCookTimer } from 'hooks/useCookTimer'
 import Image from 'next/image'
 import { Pause, Pencil, Play, Plus, X } from 'phosphor-react'
@@ -13,7 +14,7 @@ export function CardTimer ({
   type,
   timer
 }: CardTimerProps) {
-  const { toggleTimer } = useCookTimer()
+  const { togglePlayTimer, pauseTimer } = useCookTimer()
 
   if (type === 'add' && !timer) {
     return (
@@ -55,13 +56,15 @@ export function CardTimer ({
       <footer>
         <S.WrapperIcon around='circle'>
           <AddPlayerPopover timer={timer} mode="edit">
-            <Pencil
-              size="1.5rem"
-              color={DesignSystemColors.primary}
-            />
+            <button onClick={() => { pauseTimer(timer.uuid) }}>
+              <Pencil
+                size="1.5rem"
+                color={DesignSystemColors.primary}
+              />
+            </button>
           </AddPlayerPopover>
         </S.WrapperIcon>
-        <S.PlayerButton onClick={() => { toggleTimer(timer.uuid) }}>
+        <S.PlayerButton onClick={() => { togglePlayTimer(timer.uuid) }}>
            {timer.status === 'run'
              ? (
                 <Pause
@@ -79,10 +82,12 @@ export function CardTimer ({
                )}
         </S.PlayerButton>
         <S.WrapperIcon around='circle'>
-          <X
-            size="1.5rem"
-            color={DesignSystemColors.primary}
-          />
+          <DeleteTimerAlert timerId={timer.uuid}>
+            <X
+              size="1.5rem"
+              color={DesignSystemColors.primary}
+            />
+          </DeleteTimerAlert>
         </S.WrapperIcon>
       </footer>
       <S.BackgroundBorder />

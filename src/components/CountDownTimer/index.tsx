@@ -12,6 +12,10 @@ type CountDownTimerProps = {
 export const CountDownTimer = ({ timeInSeconds, status }: CountDownTimerProps) => {
   const [timer, setTimer] = useState(timeInSeconds)
 
+  useEffect(() => {
+    setTimer(timeInSeconds)
+  }, [timeInSeconds])
+
   const {
     hour,
     minutes,
