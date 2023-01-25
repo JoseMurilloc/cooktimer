@@ -36,7 +36,12 @@ const NewTimerFormValidationSchema = zod.object({
   }
 })
 
-export function AddPlayerPopover ({ children, mode = 'add', timer }: AddPlayerPopoverProps) {
+export function AddPlayerPopover ({
+  children,
+  mode = 'add',
+  timer
+}: AddPlayerPopoverProps
+) {
   const newTimer = useForm<NewTimerFormData>({
     resolver: zodResolver(NewTimerFormValidationSchema),
     defaultValues: {
@@ -47,19 +52,33 @@ export function AddPlayerPopover ({ children, mode = 'add', timer }: AddPlayerPo
     }
   })
 
-  const { createCookTimer } = useCookTimer()
-  const { reset, handleSubmit, setValue, formState: { errors } } = newTimer
-
-  const onSubmit = (data: NewTimerFormData) => {
-    createCookTimer(data)
-    reset()
-  }
-
   useEffect(() => {
     if (mode === 'edit') {
       setInitializeValues()
     }
   }, [])
+
+  const { createCookTimer, updatePlayTimer } = useCookTimer()
+  const { reset, handleSubmit, setValue, formState: { errors } } = newTimer
+
+  const handleSubmitTimer = (data: NewTimerFormData) => {
+    const { icon, timerHour, timerMinutes, title } = data
+    const timerConversionInSeconds = ((timerHour * 60) * 60) + (timerMinutes * 60)
+
+    if (mode === 'edit' && timer) {
+      updatePlayTimer({
+        icon,
+        timer: timerConversionInSeconds,
+        title,
+        uuid: timer.uuid,
+        status: timer.status
+      })
+      return
+    }
+
+    createCookTimer(data)
+    reset()
+  }
 
   const setInitializeValues = useCallback(() => {
     if (!timer) {
@@ -94,7 +113,7 @@ export function AddPlayerPopover ({ children, mode = 'add', timer }: AddPlayerPo
           align="center"
           side="right"
         >
-          <S.Form onSubmit={handleSubmit(onSubmit)}>
+          <S.Form onSubmit={handleSubmit(handleSubmitTimer)}>
             <FormProvider {...newTimer}>
               <S.Header>
                 <h1>{renderTitle()}</h1>
@@ -114,9 +133,14 @@ export function AddPlayerPopover ({ children, mode = 'add', timer }: AddPlayerPo
               </main>
               <InputTimer label="label"/>
               <footer>
-                <Button type="submit" layout='outline'>
-                  Cancelar
-                </Button>
+                <Popover.Close asChild>
+                  <Button
+                    type="submit"
+                    layout='outline'
+                  >
+                    Cancelar
+                  </Button>
+                </Popover.Close>
                 <Button>
                   {mode === 'edit' ? 'Salvar alterações' : 'Criar'}
                 </Button>
