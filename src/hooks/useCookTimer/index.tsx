@@ -63,8 +63,6 @@ const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
   }, [])
 
   const pauseTimer = useCallback((timerId: string) => {
-    console.log(timerId)
-
     setTimers(
       currentTimers =>
         currentTimers.map(timer => {
@@ -79,6 +77,30 @@ const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
     return true
   }, [])
 
+  const resetTimer = useCallback((timerId: string) => {
+    const findTimer = timers.find(timer => timer.uuid === timerId)
+
+    if (!findTimer) {
+      return
+    }
+
+    updatePlayTimer({
+      ...findTimer,
+      timer: 0
+    })
+  }, [timers])
+
+  const getScreenMode = (
+    isFinalMinute: boolean,
+    currentType: 'add' | 'edit' | 'finalMinutes'
+  ) => {
+    if (isFinalMinute) {
+      return 'finalMinutes'
+    }
+
+    return currentType
+  }
+
   return (
     <CookTimerContext.Provider value={{
       createCookTimer,
@@ -86,7 +108,9 @@ const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
       getAllCookTimers,
       removeCookTimer,
       updatePlayTimer,
-      pauseTimer
+      pauseTimer,
+      getScreenMode,
+      resetTimer
     }}>
       {children}
     </CookTimerContext.Provider>

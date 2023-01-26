@@ -1,26 +1,36 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
+import { useCookTimer } from 'hooks/useCookTimer'
 import { getFormattedSeconds } from 'utils/getFormattedSeconds'
 
 import * as S from './styles'
+import { CountDownTimerProps } from './types'
 
-type CountDownTimerProps = {
-  timeInSeconds: number
-  status: 'run' | 'paused'
-}
-
-export const CountDownTimer = ({ timeInSeconds, status }: CountDownTimerProps) => {
+export const CountDownTimer = ({
+  timeInSeconds,
+  status, timerId
+}: CountDownTimerProps) => {
   const [timer, setTimer] = useState(timeInSeconds)
+  const [isFinalMinute, setIsFinalMinutes] = useState(false)
 
-  useEffect(() => {
-    setTimer(timeInSeconds)
-  }, [timeInSeconds])
+  const { resetTimer } = useCookTimer()
 
   const {
     hour,
     minutes,
     seconds
   } = getFormattedSeconds(timer)
+
+  useEffect(() => {
+    setTimer(timeInSeconds)
+  }, [timeInSeconds])
+
+  useEffect(() => {
+    if (minutes === 0 && hour === 0 && seconds === 0) {
+      setIsFinalMinutes(true)
+      resetTimer(timerId)
+    }
+  }, [hour, minutes, seconds])
 
   const formattedSeconds = useMemo(() => {
     if (seconds < 10) {
@@ -61,5 +71,5 @@ export const CountDownTimer = ({ timeInSeconds, status }: CountDownTimerProps) =
     }
   }, [timer, countDown])
 
-  return <S.TimerLabel>{`${formattedHour}${formattedMinutes}:${formattedSeconds}`}</S.TimerLabel>
+  return <S.TimerLabel warnStyle={isFinalMinute}>{`${formattedHour}${formattedMinutes}:${formattedSeconds}`}</S.TimerLabel>
 }

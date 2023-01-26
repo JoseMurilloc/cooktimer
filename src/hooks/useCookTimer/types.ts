@@ -10,6 +10,8 @@ export interface ICookTimerProps {
   removeCookTimer: (timerId: string) => void
   pauseTimer: (timerId: string) => void
   getAllCookTimers: () => TimerDTO[]
+  getScreenMode: (isFinalMinute: boolean, currentType: 'add' | 'edit' | 'finalMinutes') => 'add' | 'edit' | 'finalMinutes'
+  resetTimer: (timerId: string) => void
 }
 
 export interface ICookTimerProviderProps {
