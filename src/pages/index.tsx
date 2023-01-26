@@ -8,6 +8,15 @@ import * as S from '../styles/pages/home'
 export default function Home () {
   const { getAllCookTimers } = useCookTimer()
   const timers = getAllCookTimers()
+
+  const getCurrentType = (timer: number) => {
+    if (!timer) {
+      return 'finalMinutes'
+    }
+
+    return 'edit'
+  }
+
   return (
     <S.Container>
       <Head>
@@ -24,7 +33,11 @@ export default function Home () {
         <section className="cardsGrid">
           <CardTimer type="add"/>
           {timers.map(timer => (
-            <CardTimer key={timer.uuid} timer={timer} type="edit" />
+            <CardTimer
+              key={timer.uuid}
+              timer={timer}
+              type={getCurrentType(timer.timer)}
+            />
           ))}
         </section>
       </S.Main>
