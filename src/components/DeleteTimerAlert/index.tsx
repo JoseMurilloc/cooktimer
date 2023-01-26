@@ -34,14 +34,14 @@ export function DeleteTimerAlert ({
               minutos vai ser retirado dos demais
             </S.Description>
             <S.Footer>
-            <Button onClick={handleDeleteTimer} layout='outline'>
-              Cancelar
-            </Button>
             <AlertDialog.Action asChild>
               <Button>
                 Manter
               </Button>
             </AlertDialog.Action>
+            <Button onClick={handleDeleteTimer} layout='outline'>
+              Cancelar
+            </Button>
             </S.Footer>
             <AlertDialog.Action asChild>
               <S.CloseModal>
