@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import { CardTimer } from 'components/CardTimer'
 import Header from 'components/Header'
 import { useCookTimer } from 'hooks/useCookTimer'
@@ -8,6 +10,12 @@ import * as S from '../styles/pages/home'
 export default function Home () {
   const { getAllCookTimers } = useCookTimer()
   const timers = getAllCookTimers()
+
+  useEffect(() => {
+    window.onbeforeunload = () => {
+      return true
+    }
+  }, [])
 
   const getCurrentType = (timer: number) => {
     if (!timer) {
