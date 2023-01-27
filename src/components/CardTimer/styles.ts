@@ -16,7 +16,6 @@ export const ContainerCardTimer = styled('div', {
 
   header: {
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     paddingBottom: '$4'
@@ -40,12 +39,17 @@ export const ContainerCardTimer = styled('div', {
   variants: {
     screenMode: {
       add: {
-        border: '1px dashed #C9C9C9',
+        border: '1px dashed $text_400',
         justifyContent: 'center'
       },
       edit: {
         justifyContent: 'space-between',
-        border: '1px solid #C9C9C9'
+        border: '1px solid $text_400'
+      },
+      finalMinutes: {
+        justifyContent: 'space-between',
+        border: '1px solid $error_200',
+        background: '$primary_200'
       }
     },
     focusPopover: {
@@ -111,7 +115,19 @@ export const BackgroundBorder = styled('div', {
   backgroundColor: '$primary',
   width: '100%',
   height: '0.375rem',
-  borderRadius: '0px 0px 8px 8px;'
+  borderRadius: '0px 0px 8px 8px',
+
+  variants: {
+    dangerMode: {
+      true: {
+        backgroundColor: '$error_600'
+      }
+    }
+  },
+
+  defaultVariants: {
+    dangerMode: false
+  }
 })
 
 export const PlayerButton = styled('button', {
@@ -154,6 +170,11 @@ export const WrapperIcon = styled('button', {
   border: 'none',
 
   cursor: 'pointer',
+
+  button: {
+    backgroundColor: 'transparent',
+    border: 'none'
+  },
 
   variants: {
     around: {
