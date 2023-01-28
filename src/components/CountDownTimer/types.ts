@@ -1,6 +1,6 @@
 export type CountDownTimerProps = {
   timeInSeconds: number
-  status: 'run' | 'paused'
+  status: 'run' | 'paused' | 'turnOff'
   timerId: string
 }
 

@@ -1,15 +1,21 @@
 import { styled } from 'styles'
 
 export const TimerLabel = styled('h1', {
-  fontWeight: '$bold',
+  fontWeight: '$medium',
   fontFamily: '$default',
   fontSize: '$6xl',
   color: '$text',
 
   variants: {
-    warnStyle: {
-      true: {
+    status: {
+      danger: {
         color: '$error'
+      },
+      normal: {
+        color: '$text'
+      },
+      turnOff: {
+        color: '$text_600'
       }
     }
   }

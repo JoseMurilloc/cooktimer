@@ -8,12 +8,25 @@ import { CountDownTimerProps } from './types'
 
 export const CountDownTimer = ({
   timeInSeconds,
-  status, timerId
+  status,
+  timerId
 }: CountDownTimerProps) => {
   const [timer, setTimer] = useState(timeInSeconds)
   const [isFinalMinute, setIsFinalMinutes] = useState(false)
 
   const { resetTimer } = useCookTimer()
+
+  const fetchingStatus = () => {
+    if (status === 'turnOff') {
+      return 'turnOff'
+    }
+
+    if (isFinalMinute) {
+      return 'danger'
+    }
+
+    return 'normal'
+  }
 
   const {
     hour,
@@ -71,5 +84,5 @@ export const CountDownTimer = ({
     }
   }, [timer, countDown])
 
-  return <S.TimerLabel warnStyle={isFinalMinute}>{`${formattedHour}${formattedMinutes}:${formattedSeconds}`}</S.TimerLabel>
+  return <S.TimerLabel status={fetchingStatus()}>{`${formattedHour}${formattedMinutes}:${formattedSeconds}`}</S.TimerLabel>
 }
