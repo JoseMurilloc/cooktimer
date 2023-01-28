@@ -90,27 +90,34 @@ const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
     })
   }, [timers])
 
-  const getScreenMode = (
-    isFinalMinute: boolean,
-    currentType: 'add' | 'edit' | 'finalMinutes'
-  ) => {
-    if (isFinalMinute) {
-      return 'finalMinutes'
+  const turnOffTimer = useCallback((timerId: string) => {
+    const findTimer = timers.find(timer => timer.uuid === timerId)
+
+    if (!findTimer) {
+      return
     }
 
-    return currentType
-  }
+    updatePlayTimer({
+      ...findTimer,
+      status: 'turnOff'
+    })
+  }, [timers])
+
+  const isTurnOff = useCallback((timerId: string) => {
+    return timers.some(timer => timer.uuid === timerId)
+  }, [])
 
   return (
     <CookTimerContext.Provider value={{
+      isTurnOff,
       createCookTimer,
       togglePlayTimer,
       getAllCookTimers,
       removeCookTimer,
       updatePlayTimer,
       pauseTimer,
-      getScreenMode,
-      resetTimer
+      resetTimer,
+      turnOffTimer
     }}>
       {children}
     </CookTimerContext.Provider>

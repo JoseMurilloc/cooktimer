@@ -3,5 +3,5 @@ export type TimerDTO = {
   title: string
   icon: string
   timer: number
-  status: 'run' | 'paused'
+  status: 'run' | 'paused' | 'turnOff'
 }

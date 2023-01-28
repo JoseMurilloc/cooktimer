@@ -11,10 +11,10 @@ type PlayButtonProps = {
 }
 
 export function PlayButton ({ timer, isTimerEnd }: PlayButtonProps) {
-  const { togglePlayTimer } = useCookTimer()
+  const { togglePlayTimer, turnOffTimer } = useCookTimer()
 
   const handleTurnOffTimer = () => {
-    console.log('pressed')
+    turnOffTimer(timer.uuid)
   }
 
   if (isTimerEnd) {
