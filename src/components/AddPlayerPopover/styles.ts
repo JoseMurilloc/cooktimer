@@ -4,7 +4,7 @@ import { styled } from '../../styles'
 
 export const Content = styled(Popover.Content, {
   backgroundColor: '#FDFDFD',
-  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.13)',
+  boxShadow: '-1px -38px 90px 18px rgba(0,0,0,0.13)',
   borderRadius: '0.75rem',
   minWidth: '18.875rem',
   padding: '1.875rem 2.8125rem 1.875rem 1.25rem',
