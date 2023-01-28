@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -42,6 +42,7 @@ export function AddPlayerPopover ({
   timer
 }: AddPlayerPopoverProps
 ) {
+  const [isOpen, setIsOpen] = useState(false)
   const newTimer = useForm<NewTimerFormData>({
     resolver: zodResolver(NewTimerFormValidationSchema),
     defaultValues: {
@@ -58,7 +59,7 @@ export function AddPlayerPopover ({
     }
   }, [])
 
-  const { createCookTimer, updatePlayTimer } = useCookTimer()
+  const { createCookTimer, updatePlayTimer, togglePlayTimer } = useCookTimer()
   const { reset, handleSubmit, setValue, formState: { errors } } = newTimer
 
   const handleSubmitTimer = (data: NewTimerFormData) => {
@@ -73,11 +74,15 @@ export function AddPlayerPopover ({
         uuid: timer.uuid,
         status: timer.status
       })
+      setIsOpen(false)
+      togglePlayTimer(timer.uuid)
+
       return
     }
 
     createCookTimer(data)
     reset()
+    setIsOpen(false)
   }
 
   const setInitializeValues = useCallback(() => {
@@ -94,6 +99,14 @@ export function AddPlayerPopover ({
     setValue('timerMinutes', minutes)
   }, [timer])
 
+  const handleClosePopover = () => {
+    setIsOpen(false)
+  }
+
+  const handleToggleOpenPopover = () => {
+    setIsOpen(state => !state)
+  }
+
   const renderTitle = () => {
     if (mode === 'edit') {
       return 'Editar'
@@ -103,8 +116,12 @@ export function AddPlayerPopover ({
   }
 
   return (
-    <Popover.Root>
-      <Popover.Trigger className="PopoverTrigger" asChild>
+    <Popover.Root open={isOpen}>
+      <Popover.Trigger
+        className="PopoverTrigger"
+        asChild
+        onClick={handleToggleOpenPopover}
+      >
         {children}
       </Popover.Trigger>
       <Popover.Portal>
@@ -117,12 +134,18 @@ export function AddPlayerPopover ({
             <FormProvider {...newTimer}>
               <S.Header>
                 <h1>{renderTitle()}</h1>
-                <Popover.Close className="closeButton">
+                <Popover.Close
+                  className="closeButton"
+                  onClick={handleClosePopover}
+                >
                   <X color="#444" size={16} weight="fill" />
                 </Popover.Close>
               </S.Header>
               <main>
-                <SelectedFoodEmoji defaultSelected={timer?.icon} registerName="icon"/>
+                <SelectedFoodEmoji
+                  defaultSelected={timer?.icon}
+                  registerName="icon"
+                />
                 <Input
                   placeholder="Digite o nome"
                   registerName="title"
@@ -137,6 +160,7 @@ export function AddPlayerPopover ({
                   <Button
                     type="submit"
                     layout='outline'
+                    onClick={handleClosePopover}
                   >
                     Cancelar
                   </Button>
