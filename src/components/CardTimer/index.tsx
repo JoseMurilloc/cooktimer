@@ -17,11 +17,6 @@ export function CardTimer ({
 }: CardTimerProps) {
   const { pauseTimer } = useCookTimer()
 
-  const iconColor =
-    type === 'finalMinutes'
-      ? DesignSystemColors.error
-      : DesignSystemColors.primary
-
   const isTimerEnd = type === 'finalMinutes'
 
   if (type === 'add' && !timer) {
@@ -42,6 +37,27 @@ export function CardTimer ({
     return null
   }
 
+  if (timer.status === 'turnOff') {
+    return (
+      <S.ContainerCardTimer screenMode="turnOff">
+        <header>
+          <S.TimerName>{timer.title}</S.TimerName>
+        </header>
+        <main>
+          <S.WrapperImage turnOff >
+            <Image src="/fogoApagado.svg" width={116} height={70} alt="image"/>
+          </S.WrapperImage>
+          <CountDownTimer
+            timeInSeconds={timer.timer}
+            status={timer.status}
+            timerId={timer.uuid}
+          />
+        </main>
+        <S.BackgroundBorder turnOff />
+      </S.ContainerCardTimer>
+    )
+  }
+
   return (
     <S.ContainerCardTimer screenMode={type}>
       <header>
@@ -60,21 +76,26 @@ export function CardTimer ({
           status={timer.status}
           timerId={timer.uuid}
         />
+        <S.BackgroundBorder />
       </main>
       <footer>
+       {!isTimerEnd && (
         <S.WrapperIcon around='circle'>
           <AddPlayerPopover timer={timer} mode="edit">
             <button onClick={() => { pauseTimer(timer.uuid) }}>
-              <Pencil size="1.5rem" color={iconColor} />
+              <Pencil size="1.5rem" color={DesignSystemColors.primary} />
             </button>
           </AddPlayerPopover>
-        </S.WrapperIcon>
+         </S.WrapperIcon>
+       )}
         <PlayButton isTimerEnd={isTimerEnd} timer={timer}/>
+       {!isTimerEnd && (
         <S.WrapperIcon around='circle'>
           <DeleteTimerAlert timerId={timer.uuid}>
-            <X size="1.5rem" color={iconColor} />
+            <X size="1.5rem" color={DesignSystemColors.primary} />
           </DeleteTimerAlert>
         </S.WrapperIcon>
+       )}
       </footer>
       <S.BackgroundBorder dangerMode={isTimerEnd} />
     </S.ContainerCardTimer>

@@ -39,17 +39,21 @@ export const ContainerCardTimer = styled('div', {
   variants: {
     screenMode: {
       add: {
-        border: '1px dashed $text_400',
+        border: '1px dashed $text_200',
         justifyContent: 'center'
       },
       edit: {
         justifyContent: 'space-between',
-        border: '1px solid $text_400'
+        border: '1px solid $text_200'
       },
       finalMinutes: {
         justifyContent: 'space-between',
         border: '1px solid $error_200',
         background: '$primary_200'
+      },
+      turnOff: {
+        border: '1px solid $text_200',
+        backgroundColor: '$text_000'
       }
     },
     focusPopover: {
@@ -95,10 +99,22 @@ export const WrapperImage = styled('div', {
   justifyContent: 'center',
   minHeight: '8rem',
   alignItems: 'center',
-  // padding: '1.8125rem auto',
   backgroundColor: '$primary_200',
   width: '100%',
-  borderRadius: 15
+  borderRadius: 15,
+
+  variants: {
+    turnOff: {
+      true: {
+        backgroundColor: 'transparent',
+        marginBottom: '1.25rem'
+      }
+    }
+  },
+
+  defaultVariants: {
+    turnOff: false
+  }
 })
 
 export const TimerName = styled('span', {
@@ -122,11 +138,17 @@ export const BackgroundBorder = styled('div', {
       true: {
         backgroundColor: '$error_600'
       }
+    },
+    turnOff: {
+      true: {
+        backgroundColor: '$text_400'
+      }
     }
   },
 
   defaultVariants: {
-    dangerMode: false
+    dangerMode: false,
+    turnOff: false
   }
 })
 
