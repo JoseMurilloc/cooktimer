@@ -13,6 +13,7 @@ export const ContainerCardTimer = styled('div', {
   borderRadius: 7,
 
   width: '15rem',
+  transition: 'background-color 0.5s ease',
 
   header: {
     display: 'flex',
@@ -74,10 +75,10 @@ export const Add = styled('button', {
   justifyContent: 'center',
   alignItems: 'center',
 
-  backgroundColor: '$primary_200',
-  width: '3.62rem',
-  height: '3.62rem',
-  borderRadius: '1.75rem',
+  backgroundColor: '$primary_000',
+  width: '4.8rem',
+  height: '4.8rem',
+  borderRadius: '3rem',
   border: 'none',
   cursor: 'pointer',
 
@@ -87,8 +88,8 @@ export const Add = styled('button', {
     justifyContent: 'center',
     alignItems: 'center',
 
-    width: '2.44rem',
-    height: '2.44rem',
+    width: '3rem',
+    height: '3rem',
     borderRadius: '1.75rem',
     backgroundColor: '$primary'
   }
@@ -99,7 +100,7 @@ export const WrapperImage = styled('div', {
   justifyContent: 'center',
   minHeight: '8rem',
   alignItems: 'center',
-  backgroundColor: '$primary_200',
+  backgroundColor: '$primary_000',
   width: '100%',
   borderRadius: 15,
 

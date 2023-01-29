@@ -1,8 +1,16 @@
 import * as Popover from '@radix-ui/react-popover'
 
-import { styled } from '../../styles'
+import { keyframes, styled } from '../../styles'
+
+const zoom = keyframes({
+  from: { transform: 'scale(0)' },
+  to: { transform: 'scale(1)' }
+})
 
 export const Content = styled(Popover.Content, {
+  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+  animation: `${zoom} 0.2s`,
+
   backgroundColor: '#FDFDFD',
   boxShadow: '-1px -38px 90px 18px rgba(0,0,0,0.13)',
   borderRadius: '0.75rem',

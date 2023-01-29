@@ -13,4 +13,6 @@ export type AddPlayerPopoverProps = {
   children: ReactNode
   mode?: string
   timer?: TimerDTO
+  isOpen: boolean
+  togglePopover: () => void
 }

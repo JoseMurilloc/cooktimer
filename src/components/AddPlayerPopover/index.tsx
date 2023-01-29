@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -39,10 +39,11 @@ const NewTimerFormValidationSchema = zod.object({
 export function AddPlayerPopover ({
   children,
   mode = 'add',
-  timer
+  timer,
+  isOpen,
+  togglePopover
 }: AddPlayerPopoverProps
 ) {
-  const [isOpen, setIsOpen] = useState(false)
   const newTimer = useForm<NewTimerFormData>({
     resolver: zodResolver(NewTimerFormValidationSchema),
     defaultValues: {
@@ -74,7 +75,7 @@ export function AddPlayerPopover ({
         uuid: timer.uuid,
         status: timer.status
       })
-      setIsOpen(false)
+      togglePopover()
       togglePlayTimer(timer.uuid)
 
       return
@@ -82,7 +83,7 @@ export function AddPlayerPopover ({
 
     createCookTimer(data)
     reset()
-    setIsOpen(false)
+    togglePopover()
   }
 
   const setInitializeValues = useCallback(() => {
@@ -100,11 +101,11 @@ export function AddPlayerPopover ({
   }, [timer])
 
   const handleClosePopover = () => {
-    setIsOpen(false)
+    togglePopover()
   }
 
   const handleToggleOpenPopover = () => {
-    setIsOpen(state => !state)
+    togglePopover()
   }
 
   const renderTitle = () => {
@@ -112,7 +113,7 @@ export function AddPlayerPopover ({
       return 'Editar'
     }
 
-    return 'Criar timer de cozinha'
+    return 'O que vamos fazer hoje?'
   }
 
   return (
@@ -166,7 +167,7 @@ export function AddPlayerPopover ({
                   </Button>
                 </Popover.Close>
                 <Button>
-                  {mode === 'edit' ? 'Salvar alterações' : 'Criar'}
+                  {mode === 'edit' ? 'Salvar alterações' : 'Começar'}
                 </Button>
               </footer>
              </FormProvider>

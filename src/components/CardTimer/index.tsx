@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { CountDownTimer } from 'components/CountDownTimer'
 import { DeleteTimerAlert } from 'components/DeleteTimerAlert'
 import { PlayButton } from 'components/PlayButton'
@@ -15,14 +17,19 @@ export function CardTimer ({
   type,
   timer
 }: CardTimerProps) {
+  const [isOpenPopover, setIsOpenPopover] = useState(false)
   const { pauseTimer } = useCookTimer()
 
   const isTimerEnd = type === 'finalMinutes'
 
+  const togglePopover = () => {
+    setIsOpenPopover(state => !state)
+  }
+
   if (type === 'add' && !timer) {
     return (
-      <S.ContainerCardTimer focusPopover={false} screenMode={type}>
-        <AddPlayerPopover>
+      <S.ContainerCardTimer focusPopover={isOpenPopover} screenMode={type}>
+        <AddPlayerPopover isOpen={isOpenPopover} togglePopover={togglePopover}>
           <S.Add>
             <div className="content">
               <Plus size={22} weight="fill" color="#FFF9F2" />
@@ -59,7 +66,7 @@ export function CardTimer ({
   }
 
   return (
-    <S.ContainerCardTimer screenMode={type}>
+    <S.ContainerCardTimer focusPopover={isOpenPopover} screenMode={type}>
       <header>
         <S.TimerName>{timer.title}</S.TimerName>
       </header>
@@ -81,7 +88,12 @@ export function CardTimer ({
       <footer>
        {!isTimerEnd && (
         <S.WrapperIcon around='circle'>
-          <AddPlayerPopover timer={timer} mode="edit">
+          <AddPlayerPopover
+            timer={timer}
+            mode="edit"
+            isOpen={isOpenPopover}
+            togglePopover={togglePopover}
+          >
             <button onClick={() => { pauseTimer(timer.uuid) }}>
               <Pencil size="1.5rem" color={DesignSystemColors.primary} />
             </button>
