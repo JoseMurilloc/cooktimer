@@ -24,7 +24,7 @@ O Cook Timer é uma aplicação web feita com React que permite que as pessoas c
 - React Hooks
 - Context API
 - Stitches
-- StoreBook
+- Storybook
 
 ## 🧰 | Como rodar
 
