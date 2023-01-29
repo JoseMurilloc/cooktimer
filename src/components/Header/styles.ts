@@ -20,7 +20,7 @@ export const ProfileHeader = styled('aside', {
   gap: '$3',
 
   backgroundColor: '$primary_200',
-  padding: '$3',
+  padding: '$2 $3',
   borderRadius: 10,
 
   cursor: 'pointer',
