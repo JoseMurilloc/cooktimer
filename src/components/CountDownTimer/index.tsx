@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { useCookTimer } from 'hooks/useCookTimer'
+import { useTimeOut } from 'hooks/useTimeOut'
 import { getFormattedSeconds } from 'utils/getFormattedSeconds'
 
 import * as S from './styles'
@@ -15,6 +16,7 @@ export const CountDownTimer = ({
   const [isFinalMinute, setIsFinalMinutes] = useState(false)
 
   const { resetTimer } = useCookTimer()
+  const { handleNotifier } = useTimeOut()
 
   const fetchingStatus = () => {
     if (status === 'turnOff') {
@@ -40,6 +42,7 @@ export const CountDownTimer = ({
 
   useEffect(() => {
     if (minutes === 0 && hour === 0 && seconds === 0) {
+      handleNotifier().catch(x => { console.log(x) })
       setIsFinalMinutes(true)
       resetTimer(timerId)
     }
@@ -84,5 +87,9 @@ export const CountDownTimer = ({
     }
   }, [timer, countDown])
 
-  return <S.TimerLabel status={fetchingStatus()}>{`${formattedHour}${formattedMinutes}:${formattedSeconds}`}</S.TimerLabel>
+  return (
+    <S.TimerLabel status={fetchingStatus()}>
+      {`${formattedHour}${formattedMinutes}:${formattedSeconds}`}
+    </S.TimerLabel>
+  )
 }

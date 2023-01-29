@@ -3,12 +3,14 @@ import { useEffect } from 'react'
 import { CardTimer } from 'components/CardTimer'
 import Header from 'components/Header'
 import { useCookTimer } from 'hooks/useCookTimer'
+import { useTimeOut } from 'hooks/useTimeOut'
 import Head from 'next/head'
 
 import * as S from '../styles/pages/home'
 
 export default function Home () {
-  const { getAllCookTimers } = useCookTimer()
+  const { getAllCookTimers, hasTimerTurnOff } = useCookTimer()
+  const { startVerifyTurnOff, stopVerifyTurnOff } = useTimeOut()
   const timers = getAllCookTimers()
 
   useEffect(() => {
@@ -16,6 +18,21 @@ export default function Home () {
       return true
     }
   }, [])
+
+  useEffect(() => {
+    console.log(hasTimerTurnOff())
+
+    if (!hasTimerTurnOff()) {
+      stopVerifyTurnOff()
+      return
+    }
+
+    startVerifyTurnOff()
+
+    return () => {
+      stopVerifyTurnOff()
+    }
+  }, [hasTimerTurnOff])
 
   const getCurrentType = (timer: number) => {
     if (!timer) {
