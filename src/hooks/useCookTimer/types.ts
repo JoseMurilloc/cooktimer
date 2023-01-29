@@ -12,7 +12,7 @@ export interface ICookTimerProps {
   pauseTimer: (timerId: string) => void
   getAllCookTimers: () => TimerDTO[]
   resetTimer: (timerId: string) => void
-  isTurnOff: (timerId: string) => boolean
+  hasTimerTurnOff: () => boolean
 }
 
 export interface ICookTimerProviderProps {

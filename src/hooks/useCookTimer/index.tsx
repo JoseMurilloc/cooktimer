@@ -103,13 +103,13 @@ const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
     })
   }, [timers])
 
-  const isTurnOff = useCallback((timerId: string) => {
-    return timers.some(timer => timer.uuid === timerId)
-  }, [])
+  const hasTimerTurnOff = useCallback(() => {
+    return timers.some(timer => timer.status !== 'turnOff' && timer.timer === 0)
+  }, [timers])
 
   return (
     <CookTimerContext.Provider value={{
-      isTurnOff,
+      hasTimerTurnOff,
       createCookTimer,
       togglePlayTimer,
       getAllCookTimers,
