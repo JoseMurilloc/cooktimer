@@ -21,6 +21,11 @@ export const Main = styled('main', {
     fontSize: '$md'
   },
 
+  'section h1': {
+    fontSize: '$4xl',
+    fontWeight: '$medium'
+  },
+
   '.cardsGrid': {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
