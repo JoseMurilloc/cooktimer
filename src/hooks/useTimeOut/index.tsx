@@ -20,14 +20,10 @@ export const useTimeOut = () => {
   }
 
   const startVerifyTurnOff = () => {
-    console.log('start ')
-
     const notify = setInterval(handleNotifier, 1000 * 60)
     setNotifyInterval(notify)
   }
   const stopVerifyTurnOff = () => {
-    console.log('stop', notifyInterval)
-
     clearInterval(notifyInterval)
   }
 
