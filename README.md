@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+<p align="center">
+  <img src="./public/fogo.svg">
+</p>
 
-First, run the development server:
+<h1 align="center">
+ 🍲 COOK TIMER 🔥
+</h1>
+
+
+🚧 **Cook timer está em desenvolvimento** 🚧
+
+> Essa aplicação tem o intuito educacional onde estou usando como base de estudo na prática com a biblioteca React JS . [Novidades estarei postando aqui](https://www.linkedin.com/in/jose-murillodev/)
+
+## 📖 | Sobre 
+O Cook Timer é uma aplicação web feita com React que permite que as pessoas conciliam o trabalho em casa com o preparo de alimentos. Com ele, o usuário pode definir um tempo para cozinhar sua comida e, quando esse tempo é atingido, receber uma notificação de que sua comida está pronta. Dessa forma, é possível evitar que a comida seja queimada ou mal-cozinhada enquanto o usuário se concentra no trabalho. Além disso, o Cook Timer pode ser usado como uma ferramenta para planejar suas refeições, permitindo que o usuário tenha mais tempo para se concentrar no trabalho. 😍
+
+
+## 🚀 | Tecnologias
+
+- React
+- Next
+- Typescript
+- React Hooks
+- Context API
+- Stitches
+- StoreBook
+
+## 🧰 | Como rodar
+
+#### Clone o projeto:
 
 ```bash
-npm run dev
-# or
-yarn dev
+git clone https://github.com/JoseMurilloc/cooktimer
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Instale as depenicas do projeto:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn || npm install
+```
+#### Rode o projeto:
+```bash
+yarn dev || npm run dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Contribuir
+Se você está interessado em contribuir para este projeto no GitHub, seria ótimo ter você a bordo!
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+---
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="center">With 💛 by JoseMurilloc</p>
