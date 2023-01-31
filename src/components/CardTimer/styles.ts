@@ -100,21 +100,26 @@ export const WrapperImage = styled('div', {
   justifyContent: 'center',
   minHeight: '8rem',
   alignItems: 'center',
-  backgroundColor: '$primary_000',
   width: '100%',
   borderRadius: 15,
 
   variants: {
-    turnOff: {
-      true: {
+    cookStatus: {
+      normal: {
+        backgroundColor: '$primary_000'
+      },
+      turnOff: {
         backgroundColor: 'transparent',
         marginBottom: '1.25rem'
+      },
+      fire: {
+        backgroundColor: '$primary_200'
       }
     }
   },
 
   defaultVariants: {
-    turnOff: false
+    cookStatus: 'normal'
   }
 })
 

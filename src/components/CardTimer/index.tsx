@@ -51,7 +51,7 @@ export function CardTimer ({
           <S.TimerName>{timer.title}</S.TimerName>
         </header>
         <main>
-          <S.WrapperImage turnOff >
+          <S.WrapperImage cookStatus="turnOff" >
             <Image src="/fogoApagado.svg" width={116} height={70} alt="image"/>
           </S.WrapperImage>
           <CountDownTimer
@@ -65,13 +65,21 @@ export function CardTimer ({
     )
   }
 
+  const currentCookTimerStatus = (currentType: string) => {
+    if (type === 'finalMinutes') {
+      return 'fire'
+    }
+
+    return 'normal'
+  }
+
   return (
     <S.ContainerCardTimer focusPopover={isOpenPopover} screenMode={type}>
       <header>
         <S.TimerName>{timer.title}</S.TimerName>
       </header>
       <main>
-        <S.WrapperImage>
+        <S.WrapperImage cookStatus={currentCookTimerStatus(type)}>
           {
             isTimerEnd
               ? <Image src="/fogo.svg" width={116} height={70} alt="image"/>
