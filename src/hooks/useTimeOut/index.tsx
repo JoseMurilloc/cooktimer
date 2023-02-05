@@ -8,10 +8,11 @@ export const useTimeOut = () => {
   const handleNotifier = async () => {
     try {
       await Notifier.init()
-      await Notifier.playSound('https://www.w3schools.com/tags/horse.mp3')
+      await Notifier.playSound('http://localhost:3333/?file=microwave')
+      // await Notifier.playSound('http://localhost:3000/api/audio')
       await Notifier.notify({
-        title: 'Desligar o fogo',
-        body: 'Desligue o alimento que está no fogo por favor.',
+        title: 'Tempo do temporizador terminou',
+        body: 'Desligue o fogo agora, o tempo estabelecido pelo temporizador já passou',
         icon: 'https://images.emojiterra.com/google/noto-emoji/v2.034/512px/1f525.png'
       })
     } catch (err) {
@@ -20,7 +21,7 @@ export const useTimeOut = () => {
   }
 
   const startVerifyTurnOff = () => {
-    const notify = setInterval(handleNotifier, 1000 * 60)
+    const notify = setInterval(handleNotifier, 1000 * 5)
     setNotifyInterval(notify)
   }
   const stopVerifyTurnOff = () => {
