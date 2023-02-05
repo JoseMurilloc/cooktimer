@@ -2,7 +2,7 @@ import * as AlertDialog from '@radix-ui/react-alert-dialog'
 import { styled } from 'styles'
 
 export const Overlay = styled(AlertDialog.Overlay, {
-  backgroundColor: '#111111dd',
+  backgroundColor: '#111111cc',
   position: 'fixed',
   inset: 0
 })
