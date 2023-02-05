@@ -26,7 +26,7 @@ export default {
 } as Meta<typeof AddPlayerPopover>
 
 const Template: ComponentStory<typeof AddPlayerPopover> = (args) => (
-  <AddPlayerPopover />
+  <AddPlayerPopover {...args} />
 )
 
 export const Default = Template.bind({})

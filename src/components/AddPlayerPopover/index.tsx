@@ -15,7 +15,7 @@ import { getFormattedSeconds } from '../../utils/getFormattedSeconds'
 import * as S from './styles'
 import { AddPlayerPopoverProps } from './types'
 
-type NewTimerFormData = zod.infer<typeof NewTimerFormValidationSchema>
+export type NewTimerFormData = zod.infer<typeof NewTimerFormValidationSchema>
 
 const NewTimerFormValidationSchema = zod.object({
   title: zod.string().min(1, 'Informe o que irá cozinhar'),
@@ -155,7 +155,7 @@ export function AddPlayerPopover ({
                   required
                 />
               </main>
-              <InputTimer label="label"/>
+              <InputTimer label="Tempo de cozimento"/>
               <footer>
                 <Popover.Close asChild>
                   <Button
