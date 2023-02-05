@@ -21,6 +21,7 @@ export function CardTimer ({
   const { pauseTimer } = useCookTimer()
 
   const isTimerEnd = type === 'finalMinutes'
+  const cardMode = type === 'finalMinutes' ? 'fire' : 'cook'
 
   const togglePopover = () => {
     setIsOpenPopover(state => !state)
@@ -42,6 +43,11 @@ export function CardTimer ({
 
   if (!timer) {
     return null
+  }
+
+  const renderImage = {
+    fire: <Image src="/fogo.svg" width={116} height={70} alt="image"/>,
+    cook: <Image src={getUrlByValueSelected(timer.icon)} width={116} height={70} alt="image"/>
   }
 
   if (timer.status === 'turnOff') {
@@ -80,11 +86,7 @@ export function CardTimer ({
       </header>
       <main>
         <S.WrapperImage cookStatus={currentCookTimerStatus(type)}>
-          {
-            isTimerEnd
-              ? <Image src="/fogo.svg" width={116} height={70} alt="image"/>
-              : <Image src={getUrlByValueSelected(timer.icon)} width={116} height={70} alt="image"/>
-          }
+          {renderImage[cardMode]}
         </S.WrapperImage>
         <CountDownTimer
           timeInSeconds={timer.timer}
@@ -94,7 +96,7 @@ export function CardTimer ({
         <S.BackgroundBorder />
       </main>
       <footer>
-       {!isTimerEnd && (
+        {cardMode === 'cook' && (
         <S.WrapperIcon around='circle'>
           <AddPlayerPopover
             timer={timer}
@@ -106,16 +108,16 @@ export function CardTimer ({
               <Pencil size="1.5rem" color={DesignSystemColors.primary} />
             </button>
           </AddPlayerPopover>
-         </S.WrapperIcon>
-       )}
+          </S.WrapperIcon>
+        )}
         <PlayButton isTimerEnd={isTimerEnd} timer={timer}/>
-       {!isTimerEnd && (
+        {cardMode === 'cook' && (
         <S.WrapperIcon around='circle'>
           <DeleteTimerAlert timerId={timer.uuid}>
             <X size="1.5rem" color={DesignSystemColors.primary} />
           </DeleteTimerAlert>
         </S.WrapperIcon>
-       )}
+        )}
       </footer>
       <S.BackgroundBorder dangerMode={isTimerEnd} />
     </S.ContainerCardTimer>
