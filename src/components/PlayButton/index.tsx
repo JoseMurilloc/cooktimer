@@ -10,6 +10,12 @@ type PlayButtonProps = {
   timer: TimerDTO
 }
 
+const renderPlayIcon = {
+  run: <Pause weight="fill" size="1.5rem" color={DesignSystemColors.primary_000}/>,
+  paused: <Play weight="fill" size="1.5rem" color={DesignSystemColors.primary_000}/>,
+  turnOff: <></>
+}
+
 export function PlayButton ({ timer, isTimerEnd }: PlayButtonProps) {
   const { togglePlayTimer, turnOffTimer } = useCookTimer()
 
@@ -27,21 +33,7 @@ export function PlayButton ({ timer, isTimerEnd }: PlayButtonProps) {
 
   return (
     <S.PlayerButton onClick={() => { togglePlayTimer(timer.uuid) }}>
-      {timer.status === 'run'
-        ? (
-         <Pause
-           weight="fill"
-           size="1.5rem"
-           color={DesignSystemColors.primary_000}
-         />
-          )
-        : (
-         <Play
-           weight="fill"
-           size="1.5rem"
-           color={DesignSystemColors.primary_000}
-         />
-          )}
+      {renderPlayIcon[timer.status]}
     </S.PlayerButton>
   )
 }
