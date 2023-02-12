@@ -1,4 +1,5 @@
 import { ComponentStory, Meta } from '@storybook/react'
+
 import { CardTimer } from '.'
 
 export default {
@@ -33,6 +34,10 @@ export const CardTimerEdit = Template.bind({})
 CardTimerEdit.args = {
   type: 'edit',
   timer: {
-    title: 'Fazendo arroz na panela'
+    title: 'Fazendo arroz na panela',
+    status: 'run',
+    uuid: 'fake-uuid',
+    icon: '/panela.svg',
+    timer: 60
   }
 }
