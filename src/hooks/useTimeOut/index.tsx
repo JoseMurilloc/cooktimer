@@ -1,15 +1,16 @@
 import { useState } from 'react'
 
+import { useClick } from 'lib/useSound'
 import { Notifier } from 'utils/Notifier'
 
 export const useTimeOut = () => {
   const [notifyInterval, setNotifyInterval] = useState<NodeJS.Timer>()
+  const [play] = useClick()
 
   const handleNotifier = async () => {
     try {
       await Notifier.init()
-      await Notifier.playSound('http://localhost:3333/?file=microwave')
-      // await Notifier.playSound('http://localhost:3000/api/audio')
+      play()
       await Notifier.notify({
         title: 'Tempo do temporizador terminou',
         body: 'Desligue o fogo agora, o tempo estabelecido pelo temporizador já passou',

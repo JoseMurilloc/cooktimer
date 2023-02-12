@@ -3,7 +3,7 @@ import { styled } from '../../styles'
 export const ContainerInputTimer = styled('aside', {
   label: {
     fontFamily: '$default',
-    fontSize: '$sm',
+    fontSize: '$md',
     fontWeight: '$regular'
   }
 })
