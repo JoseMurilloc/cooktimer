@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
-    "@radix-ui/react-alert-dialog": "^1.0.2",
     "@radix-ui/react-popover": "1.0.2",
     "@radix-ui/react-select": "1.1.2",
     "@stitches/react": "^1.2.8",
