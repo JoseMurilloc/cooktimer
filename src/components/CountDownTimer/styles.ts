@@ -5,6 +5,7 @@ export const TimerLabel = styled('h1', {
   fontFamily: '$default',
   fontSize: '$6xl',
   color: '$text',
+  marginTop: '1.375rem',
 
   variants: {
     status: {
