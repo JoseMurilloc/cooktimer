@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react'
 
+import { AddPlayerPopover } from 'components/AddPlayerPopover'
 import { CountDownTimer } from 'components/CountDownTimer'
 import { Modal } from 'components/Modal'
 import { PlayButton } from 'components/PlayButton'
 import { useCookTimer } from 'hooks/useCookTimer'
 import Image from 'next/image'
 import { Pencil, Plus, X } from 'phosphor-react'
+import { colors as DesignSystemColors } from 'stories/designSystems/colors'
 import { getUrlByValueSelected } from 'utils/getUrlByValueSelected'
 
-import { AddPlayerPopover } from '../../components/AddPlayerPopover'
-import { colors as DesignSystemColors } from '../../stories/designSystems/colors'
 import * as S from './styles'
 import { CardTimerProps } from './types'
 
