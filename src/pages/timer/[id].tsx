@@ -4,8 +4,6 @@ import { useRouter } from 'next/router'
 export default function Timer () {
   const { query } = useRouter()
 
-  console.log(query)
-
   return (
     <>
       <Head>
