@@ -1,5 +1,6 @@
 import { TimerDTO } from 'dtos/Timer'
 import { useCookTimer } from 'hooks/useCookTimer'
+import { useTurnOffSound } from 'lib/useSound'
 import { Pause, Play } from 'phosphor-react'
 
 import { colors as DesignSystemColors } from '../../stories/designSystems/colors'
@@ -18,8 +19,10 @@ const renderPlayIcon = {
 
 export function PlayButton ({ timer, isTimerEnd }: PlayButtonProps) {
   const { togglePlayTimer, turnOffTimer } = useCookTimer()
+  const { play } = useTurnOffSound()
 
   const handleTurnOffTimer = () => {
+    play()
     turnOffTimer(timer.uuid)
   }
 
