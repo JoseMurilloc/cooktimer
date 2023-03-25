@@ -20,8 +20,6 @@ const Notifier = {
       body,
       icon
     })
-
-    console.log(notification)
   }
 }
 
