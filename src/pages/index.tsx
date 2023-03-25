@@ -20,8 +20,6 @@ export default function Home () {
   }, [])
 
   useEffect(() => {
-    console.log(hasTimerTurnOff())
-
     if (!hasTimerTurnOff()) {
       stopVerifyTurnOff()
       return
@@ -53,7 +51,6 @@ export default function Home () {
       <S.Main>
         <section>
           <h1>Vamos começar a cozinhar?</h1>
-          <p>Crie seu primeiro temporizador e defina seus horários.</p>
         </section>
         <section className="cardsGrid">
           <CardTimer type="add"/>

@@ -1,13 +1,9 @@
 import { ReactNode } from 'react'
 
 import { TimerDTO } from 'dtos/Timer'
+import * as zod from 'zod'
 
-export type NewTimerFormData = {
-  icon: string
-  title: string
-  timerHour: number
-  timerMinutes: number
-}
+import { TimerValidationSchema } from './schemas'
 
 export type AddPlayerPopoverProps = {
   children: ReactNode
@@ -16,3 +12,5 @@ export type AddPlayerPopoverProps = {
   isOpen: boolean
   togglePopover: () => void
 }
+
+export type NewTimerFormData = zod.infer<typeof TimerValidationSchema>

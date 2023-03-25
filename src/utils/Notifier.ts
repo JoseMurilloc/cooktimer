@@ -20,8 +20,9 @@ const Notifier = {
       body,
       icon
     })
-
-    console.log(notification)
+    notification.addEventListener('click', function () {
+      window.focus()
+    })
   }
 }
 

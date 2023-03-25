@@ -6,13 +6,13 @@ export const ContainerCardTimer = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   backgroundColor: '$text_000',
-  minHeight: '21.125rem',
 
   padding: '$7',
   gap: 13,
   borderRadius: 7,
 
-  width: '15rem',
+  width: '13.75rem',
+  height: '23.12rem',
   transition: 'background-color 0.5s ease',
 
   header: {

@@ -22,7 +22,7 @@ export const ContainerButton = styled('button', {
         border: '1px solid $primary'
       },
       solid: {
-        color: '$text_200',
+        color: '$text_000',
         backgroundColor: '$primary'
       }
     }

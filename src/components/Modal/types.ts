@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 
-export type DeleteTimerAlertProps = {
+export type ModalProps = {
   children: ReactNode
-  timerId: string
 }

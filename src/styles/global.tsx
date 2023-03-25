@@ -9,7 +9,8 @@ export const globalStyles = globalCss({
 
   '*, body': {
     margin: 0,
-    padding: 0
+    padding: 0,
+    outlineColor: '$primary'
   },
 
   body: {

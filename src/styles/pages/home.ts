@@ -1,17 +1,13 @@
 import { styled } from '..'
 
 export const Container = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  width: '100vw',
-  backgroundColor: '#fff',
-  paddingTop: '$10',
-  gap: '$20'
+  display: 'block',
+  width: '100vw'
 })
 
 export const Main = styled('main', {
-  width: '70rem',
+  maxWidth: '70rem',
+  margin: 'auto',
   display: 'flex',
   flexDirection: 'column',
   gap: '$10',
@@ -21,9 +17,11 @@ export const Main = styled('main', {
     fontSize: '$md'
   },
 
-  'section h1': {
-    fontSize: '$4xl',
-    fontWeight: '$medium'
+  'section > h1': {
+    fontSize: '$6xl',
+    fontWeight: '$bold',
+    width: 500,
+    color: '$text_600'
   },
 
   '.cardsGrid': {

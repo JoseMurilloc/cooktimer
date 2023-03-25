@@ -5,36 +5,15 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as Popover from '@radix-ui/react-popover'
 import { useCookTimer } from 'hooks/useCookTimer'
 import { X } from 'phosphor-react'
-import * as zod from 'zod'
 
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { InputTimer } from '../../components/InputTimer'
 import { SelectedFoodEmoji } from '../../components/SelectedFoodEmoji'
 import { getFormattedSeconds } from '../../utils/getFormattedSeconds'
+import { TimerValidationSchema } from './schemas'
 import * as S from './styles'
-import { AddPlayerPopoverProps } from './types'
-
-export type NewTimerFormData = zod.infer<typeof NewTimerFormValidationSchema>
-
-const NewTimerFormValidationSchema = zod.object({
-  title: zod.string().min(1, 'Informe o que irá cozinhar'),
-  icon: zod.string(),
-  timerHour: zod
-    .number()
-    .max(24, 'Horas deve ser de no máximo 24 minutos.'),
-  timerMinutes: zod
-    .number()
-    .max(60, 'Minutos deve ser de no máximo 60 minutos.')
-}).superRefine((data, ctx) => {
-  if (!data.timerHour && !data.timerMinutes) {
-    ctx.addIssue({
-      code: zod.ZodIssueCode.custom,
-      path: ['timerMinutes'],
-      message: 'Tempo de cozinha é necessário para se criar um timer'
-    })
-  }
-})
+import { AddPlayerPopoverProps, NewTimerFormData } from './types'
 
 export function AddPlayerPopover ({
   children,
@@ -45,7 +24,7 @@ export function AddPlayerPopover ({
 }: AddPlayerPopoverProps
 ) {
   const newTimer = useForm<NewTimerFormData>({
-    resolver: zodResolver(NewTimerFormValidationSchema),
+    resolver: zodResolver(TimerValidationSchema),
     defaultValues: {
       icon: 'pan',
       title: '',
@@ -101,7 +80,11 @@ export function AddPlayerPopover ({
   }, [timer])
 
   const handleClosePopover = () => {
+    if (timer) {
+      togglePlayTimer(timer.uuid)
+    }
     togglePopover()
+    setInitializeValues()
   }
 
   const handleToggleOpenPopover = () => {

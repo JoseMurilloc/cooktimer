@@ -59,7 +59,7 @@ const CookTimerProvider = ({ children }: ICookTimerProviderProps) => {
       status: 'run' as 'run'
     }
 
-    setTimers(presetTimers => [...presetTimers, createTimer])
+    setTimers(presetTimers => [createTimer, ...presetTimers])
   }, [])
 
   const pauseTimer = useCallback((timerId: string) => {
