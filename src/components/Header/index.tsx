@@ -9,9 +9,14 @@ export default function Header (props: HeaderProps) {
   return (
     <S.ContainerHeader>
       <div className="content">
-        <div className="logo">
-          <Image src="/logo.svg" fill alt="Logo do Cook Timer" />
-        </div>
+        <Link target={'__blank'} href="/" className="logo">
+          <Image
+            src="/logo.svg"
+            width={68}
+            height={68}
+            alt="Logo do Cook Timer"
+          />
+        </Link>
 
         <S.ProfileHeader>
           <li>
@@ -21,7 +26,7 @@ export default function Header (props: HeaderProps) {
             </Link>
           </li>
           <li>
-            <Link href="/timer/1" target={'_blank'}>
+            <Link href="/" target={'_blank'}>
               <span>Sobre nós</span>
               <Share size={22} weight="fill" />
             </Link>

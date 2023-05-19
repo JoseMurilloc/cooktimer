@@ -22,10 +22,7 @@ export const ContainerHeader = styled('header', {
   '.logo': {
     position: 'relative',
     height: '100%',
-    width: '9.375rem',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
+    width: '9rem'
   }
 })
 
