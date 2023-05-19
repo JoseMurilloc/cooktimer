@@ -3,6 +3,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as Popover from '@radix-ui/react-popover'
+import { useCardTimer } from 'contexts/CardTimerContext'
 import { useCookTimer } from 'hooks/useCookTimer'
 import { X } from 'phosphor-react'
 
@@ -18,11 +19,11 @@ import { AddPlayerPopoverProps, NewTimerFormData } from './types'
 export function AddPlayerPopover ({
   children,
   mode = 'add',
-  timer,
   isOpen,
   togglePopover
 }: AddPlayerPopoverProps
 ) {
+  const { timer } = useCardTimer()
   const newTimer = useForm<NewTimerFormData>({
     resolver: zodResolver(TimerValidationSchema),
     defaultValues: {

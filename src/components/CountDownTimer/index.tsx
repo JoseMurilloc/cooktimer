@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
+import { useCardTimer } from 'contexts/CardTimerContext'
 import { useCookTimer } from 'hooks/useCookTimer'
 import { useTimeOut } from 'hooks/useTimeOut'
 import { getFormattedSeconds } from 'utils/getFormattedSeconds'
@@ -7,12 +8,10 @@ import { getFormattedSeconds } from 'utils/getFormattedSeconds'
 import * as S from './styles'
 import { CountDownTimerProps } from './types'
 
-export const CountDownTimer = ({
-  timeInSeconds,
-  status,
-  timerId
-}: CountDownTimerProps) => {
-  const [timer, setTimer] = useState(timeInSeconds)
+export const CountDownTimer = (props: CountDownTimerProps) => {
+  const { timer: { timer, uuid, status } } = useCardTimer()
+
+  const [timerInSeconds, setTimerInSeconds] = useState(timer)
   const [isFinalMinute, setIsFinalMinutes] = useState(false)
 
   const { resetTimer } = useCookTimer()
@@ -34,17 +33,17 @@ export const CountDownTimer = ({
     hour,
     minutes,
     seconds
-  } = getFormattedSeconds(timer)
+  } = getFormattedSeconds(timerInSeconds)
 
   useEffect(() => {
-    setTimer(timeInSeconds)
-  }, [timeInSeconds])
+    setTimerInSeconds(timer)
+  }, [timer])
 
   useEffect(() => {
     if (minutes === 0 && hour === 0 && seconds === 0) {
       handleNotifier().catch(x => { console.log(x) })
       setIsFinalMinutes(true)
-      resetTimer(timerId)
+      resetTimer(uuid)
     }
   }, [hour, minutes, seconds])
 
@@ -77,15 +76,15 @@ export const CountDownTimer = ({
 
   const countDown = useCallback(() => {
     if (status === 'run') {
-      setTimeout(() => { setTimer(prevTimer => (prevTimer -= 1)) }, 1000)
+      setTimeout(() => { setTimerInSeconds(prevTimer => (prevTimer -= 1)) }, 1000)
     }
   }, [status])
 
   useEffect(() => {
-    if (timer > 0) {
+    if (timerInSeconds > 0) {
       countDown()
     }
-  }, [timer, countDown])
+  }, [timerInSeconds, countDown])
 
   return (
     <S.TimerLabel status={fetchingStatus()}>
