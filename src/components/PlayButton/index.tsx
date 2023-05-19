@@ -1,5 +1,4 @@
 import { useCardTimer } from 'contexts/CardTimerContext'
-import { TimerDTO } from 'dtos/Timer'
 import { useCookTimer } from 'hooks/useCookTimer'
 import { useTurnOffSound } from 'lib/useSound'
 import { Pause, Play } from 'phosphor-react'

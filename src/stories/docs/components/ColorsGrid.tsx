@@ -1,6 +1,6 @@
 import { colors } from '../../designSystems/colors'
 
-export function ColorsGrid() {
+export function ColorsGrid () {
   return Object.entries(colors).map(([key, color]) => {
     return (
       <div key={key} style={{ backgroundColor: color, padding: '2rem' }}>

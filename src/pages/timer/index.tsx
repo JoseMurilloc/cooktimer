@@ -6,8 +6,7 @@ import Header from 'components/Header'
 import { useCookTimer } from 'hooks/useCookTimer'
 import { useTimeOut } from 'hooks/useTimeOut'
 import Head from 'next/head'
-
-import * as S from './styles'
+import * as S from 'styles/pages/timer'
 
 export default function Timer () {
   const { getAllCookTimers, hasTimerTurnOff } = useCookTimer()
