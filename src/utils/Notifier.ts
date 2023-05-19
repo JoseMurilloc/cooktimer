@@ -22,6 +22,7 @@ const Notifier = {
     })
     notification.addEventListener('click', function () {
       window.focus()
+      notification.close()
     })
   }
 }
