@@ -1,3 +1,4 @@
+import { useCardTimer } from 'contexts/CardTimerContext'
 import { TimerDTO } from 'dtos/Timer'
 import { useCookTimer } from 'hooks/useCookTimer'
 import { useTurnOffSound } from 'lib/useSound'
@@ -8,7 +9,6 @@ import * as S from './styles'
 
 type PlayButtonProps = {
   isTimerEnd: boolean
-  timer: TimerDTO
 }
 
 const renderPlayIcon = {
@@ -17,8 +17,9 @@ const renderPlayIcon = {
   turnOff: <></>
 }
 
-export function PlayButton ({ timer, isTimerEnd }: PlayButtonProps) {
+export function PlayButton ({ isTimerEnd }: PlayButtonProps) {
   const { togglePlayTimer, turnOffTimer } = useCookTimer()
+  const { timer } = useCardTimer()
   const { play } = useTurnOffSound()
 
   const handleTurnOffTimer = () => {

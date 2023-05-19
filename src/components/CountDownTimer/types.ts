@@ -1,8 +1,4 @@
-export type CountDownTimerProps = {
-  timeInSeconds: number
-  status: 'run' | 'paused' | 'turnOff'
-  timerId: string
-}
+export type CountDownTimerProps = {}
 
 export interface CountDownTimerHandles {
   isFinalMinute: boolean

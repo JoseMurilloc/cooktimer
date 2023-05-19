@@ -11,8 +11,9 @@ export default function Document () {
   return (
       <Html>
         <Head>
-          <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon.png" />
+          <link rel="shortcut icon" href="/logo.svg" />
+
           <link rel="theme-color" href="#FFF" />
 
           <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
@@ -21,8 +22,8 @@ export default function Document () {
         </Head>
         <body>
           <Main />
-          <div id='modal-root'></div>
           <NextScript />
+          <div id='modal-root'></div>
         </body>
       </Html>
   )
