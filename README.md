@@ -1,14 +1,13 @@
-
+<h1 align="center">
+ COOK TIMER 🔥🍲 
+</h1>
 <p align="center">
-  <img src="./public/fogo.svg">
+  🚧 Cook timer está em desenvolvimento 🚧
 </p>
 
-<h1 align="center">
- 🍲 COOK TIMER 🔥
-</h1>
-
-
-🚧 **Cook timer está em desenvolvimento** 🚧
+<p align="center">
+  <img src="https://i.ibb.co/kc3frGw/Captura-de-Tela-2023-05-19-a-s-19-13-33.png">
+</p>
 
 > Essa aplicação tem o intuito educacional onde estou usando como base de estudo na prática com a biblioteca React JS . [Novidades estarei postando aqui](https://www.linkedin.com/in/jose-murillodev/)
 
