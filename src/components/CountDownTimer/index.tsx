@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { useCardTimer } from 'contexts/CardTimerContext'
 import { useCookTimer } from 'hooks/useCookTimer'
 import { useTimeOut } from 'hooks/useTimeOut'
 import { getFormattedSeconds } from 'utils/getFormattedSeconds'
 
+import { formattedHour, formattedMinutes, formattedSeconds } from './helper'
 import * as S from './styles'
 import { CountDownTimerProps } from './types'
 
@@ -12,7 +13,7 @@ export const CountDownTimer = (props: CountDownTimerProps) => {
   const { timer: { timer, uuid, status } } = useCardTimer()
 
   const [timerInSeconds, setTimerInSeconds] = useState(timer)
-  const [isFinalMinute, setIsFinalMinutes] = useState(false)
+  const timerIntervalRef = useRef<any | null>(null)
 
   const { resetTimer } = useCookTimer()
   const { handleNotifier } = useTimeOut()
@@ -22,7 +23,7 @@ export const CountDownTimer = (props: CountDownTimerProps) => {
       return 'turnOff'
     }
 
-    if (isFinalMinute) {
+    if (timerInSeconds === 0) {
       return 'danger'
     }
 
@@ -35,60 +36,45 @@ export const CountDownTimer = (props: CountDownTimerProps) => {
     seconds
   } = getFormattedSeconds(timerInSeconds)
 
+  const stopTimerCounter = useCallback(() => {
+    clearInterval(timerIntervalRef.current)
+    timerIntervalRef.current = null
+    resetTimer(uuid)
+    handleNotifier()
+  }, [])
+
+  const handlePassTimer = useCallback(() => {
+    console.log('render')
+
+    if (timerInSeconds === 0) {
+      stopTimerCounter()
+      return
+    }
+    setTimerInSeconds(prevTimer => (prevTimer -= 1))
+  }, [timerInSeconds])
+
   useEffect(() => {
     setTimerInSeconds(timer)
   }, [timer])
 
   useEffect(() => {
-    if (minutes === 0 && hour === 0 && seconds === 0) {
-      handleNotifier().catch(x => { console.log(x) })
-      setIsFinalMinutes(true)
-      resetTimer(uuid)
-    }
-  }, [hour, minutes, seconds])
-
-  const formattedSeconds = useMemo(() => {
-    if (seconds < 10) {
-      return `0${seconds}`
+    if (status === 'paused') {
+      clearInterval(timerIntervalRef.current)
     }
 
-    return seconds
-  }, [seconds])
-
-  const formattedMinutes = useMemo(() => {
-    if (minutes < 10) {
-      return `0${minutes}`
-    }
-
-    return minutes
-  }, [minutes])
-
-  const formattedHour = useMemo(() => {
-    if (hour === 0) {
-      return ''
-    }
-    if (hour < 10) {
-      return `0${hour}:`
-    }
-
-    return hour
-  }, [hour])
-
-  const countDown = useCallback(() => {
     if (status === 'run') {
-      setTimeout(() => { setTimerInSeconds(prevTimer => (prevTimer -= 1)) }, 1000)
+      timerIntervalRef.current = setInterval(handlePassTimer, 1000)
     }
-  }, [status])
 
-  useEffect(() => {
-    if (timerInSeconds > 0) {
-      countDown()
+    return () => {
+      clearInterval(timerIntervalRef.current)
+      timerIntervalRef.current = null
     }
-  }, [timerInSeconds, countDown])
+  }, [handlePassTimer, status])
 
   return (
     <S.TimerLabel status={fetchingStatus()}>
-      {`${formattedHour}${formattedMinutes}:${formattedSeconds}`}
+      {`${formattedHour(hour)}${formattedMinutes(minutes)}:${formattedSeconds(seconds)}`}
     </S.TimerLabel>
   )
 }
