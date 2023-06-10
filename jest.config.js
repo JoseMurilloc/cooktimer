@@ -1,16 +1,16 @@
 module.exports = {
-  collectCoverage: true,
+  // collectCoverage: true,
   // on node 14.x coverage provider v8 offers good speed and more or less good report
-  coverageProvider: 'v8',
-  collectCoverageFrom: [
-    '**/*.{js,jsx,ts,tsx}',
-    '!**/*.d.ts',
-    '!**/node_modules/**',
-    '!<rootDir>/out/**',
-    '!<rootDir>/.next/**',
-    '!<rootDir>/*.config.js',
-    '!<rootDir>/coverage/**'
-  ],
+  // coverageProvider: 'v8',
+  // collectCoverageFrom: [
+  //   '**/*.{js,jsx,ts,tsx}',
+  //   '!**/*.d.ts',
+  //   '!**/node_modules/**',
+  //   '!<rootDir>/out/**',
+  //   '!<rootDir>/.next/**',
+  //   '!<rootDir>/*.config.js',
+  //   '!<rootDir>/coverage/**'
+  // ],
   moduleNameMapper: {
     // Handle CSS imports (with CSS modules)
     // https://jestjs.io/docs/webpack#mocking-css-modules
@@ -24,7 +24,15 @@ module.exports = {
     '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$/i': '<rootDir>/__mocks__/fileMock.js',
 
     // Handle module aliases
-    '^@/components/(.*)$': '<rootDir>/components/$1'
+    '^@/components/(.*)$': '<rootDir>/components/$1',
+    '^components/(.*)$': '<rootDir>/src/components/$1',
+    '^contexts/(.*)$': '<rootDir>/src/contexts/$1',
+    '^hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^lib/(.*)$': '<rootDir>/src/lib/$1',
+    '^__mocks__/(.*)$': '<rootDir>/src/__mocks__/$1',
+    '^utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^styles/(.*)$': '<rootDir>/src/styles/$1',
+    '^stories/(.*)$': '<rootDir>/src/stories/$1'
   },
   // Add more setup options before each test is run
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
