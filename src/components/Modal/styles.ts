@@ -1,4 +1,4 @@
-import { styled, keyframes } from 'styles'
+import { styled, keyframes } from '../../styles'
 
 const blowUpAnimation = keyframes({
   from: { transform: 'scale(0)' },
