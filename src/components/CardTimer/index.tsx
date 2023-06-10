@@ -37,10 +37,24 @@ export function CardTimer ({
 
   const renderImage = useCallback(() => {
     if (CARD_STATUS_MODE === 'fire') {
-      return <Image src="/fogo.svg" width={116} height={70} alt="image"/>
+      return (
+        <Image
+          src="/fogo.svg"
+          width={116}
+          height={70}
+          alt="image"
+        />
+      )
     }
 
-    return <Image src={getUrlByValueSelected(timer.icon)} width={116} height={70} alt="image"/>
+    return (
+      <Image
+        src={getUrlByValueSelected(timer.icon)}
+        width={116}
+        height={70}
+        alt="image"
+      />
+    )
   }, [timer])
 
   if (timer.status === 'turnOff') {
