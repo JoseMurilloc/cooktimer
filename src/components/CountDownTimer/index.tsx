@@ -44,14 +44,12 @@ export const CountDownTimer = (props: CountDownTimerProps) => {
   }, [])
 
   const handlePassTimer = useCallback(() => {
-    console.log('render')
-
     if (timerInSeconds === 0) {
       stopTimerCounter()
       return
     }
     setTimerInSeconds(prevTimer => (prevTimer -= 1))
-  }, [timerInSeconds])
+  }, [timerInSeconds, stopTimerCounter])
 
   useEffect(() => {
     setTimerInSeconds(timer)
