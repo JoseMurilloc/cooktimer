@@ -11,8 +11,8 @@ type PlayButtonProps = {
 }
 
 const renderPlayIcon = {
-  run: <Pause weight="fill" size="1.5rem" color={DesignSystemColors.primary_000}/>,
-  paused: <Play weight="fill" size="1.5rem" color={DesignSystemColors.primary_000}/>,
+  run: <Pause data-testid="icon-run" weight="fill" size="1.5rem" color={DesignSystemColors.primary_000}/>,
+  paused: <Play data-testid="icon-paused" weight="fill" size="1.5rem" color={DesignSystemColors.primary_000}/>,
   turnOff: <></>
 }
 
@@ -35,7 +35,7 @@ export function PlayButton ({ isTimerEnd }: PlayButtonProps) {
   }
 
   return (
-    <S.PlayerButton onClick={() => { togglePlayTimer(timer.uuid) }}>
+    <S.PlayerButton onClick={() => togglePlayTimer(timer.uuid)}>
       {renderPlayIcon[timer.status]}
     </S.PlayerButton>
   )
